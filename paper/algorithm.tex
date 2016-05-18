@@ -1,0 +1,31 @@
+\section{Algorithm}
+Let M denote the mesh model, and let S denote the Laplacian skeleton. We propose an algorithm for partitioning S into a minimum set of nice (disjoint) subgraphs, each of which can be fabricated in a 3D printer without using support structures. Decomposing S into two pieces can be done by duplicating a node v and splitting the arcs incident to v properly; however, decomposing M around v requires the determination of the position and normal of a cutting plane; to realize these and guarantee a nice look on the finished surface with shortest seams, we set a constraint of minimizing the peripheral length of a cut.
+For realizing the objectives, in addition to the angle constraint for the arcs, we need to consider the dimension constraint: the dimension of the printing model should be within the working space of a given 3D printer.
+
+To summarize, our objectives are the minimization of (1) the number of partitioned components N; (2) the total peripheral length of each cut Li, i.e., $\sum{L_i}$.
+
+The constraints of the problem are as follows:
+(1) Each arc of the partitioned subgraph of the skeleton subtends to a common axis by an angle of no larger than ?, where ? is defined based on printing experiments without using any support structure. This guarantees that the corresponding mesh component is support-free during the printing process.
+(2) The dimension of each component of the mesh, denoted by Di, corresponding to a partitioned subgraph Hi, should be constrained by the dimension of the working space of the printer.
+(3) Let the normal direction of the cutting plane c (pointing to the exterior of the partitioned part), denoted by $n(c)$; as the directed arcs of Hi are translated to a common origin, they form a fork, the fork has a central ray, which is the middle axis of the minimum cone that encloses the fork, let $Cone(Hi)$ be the cone, let the central ray of $Cone(Hi)$ be denoted as $r(Hi)$; in order to guarantee support-free fabrication, the angle between $n(c)$ and $r(Hi)$ should satisfy $A(n(c), r(Hi)) \leq \pi/2 + \theta$; finally, the base of a printing model should be large enough to gather sticky force from the building platform, such that the model is not deformed during the building process. Formally, let $b(Hi)$ denote the area of the base of the mesh component corresponding to $Hi$, let $\tau$ be a user-defined threshold value., then we have $b(Hi) ¡Ý \tau$. Here $\tau$ can be determined by some simple printing experiments.
+
+
+To summarize, we have the following optimization system:
+
+	Objective: min N and min 	(2)
+	Subject to: $A(e, r(Hi)) ¡Ü \theta?$, for each e ¡Ê Hi	(3)
+	A(n(c), r(Hi)) ¡Ü ?/2+ ?	(4)
+	Di ¡Ü D;	(5)
+	b(Hi) ¡Ý ?	(6)
+
+Assume that we are given a function $Tirm_BFS(v, G)$ which travers G from v in a breath first search manner until all arcs satisfying constraints (2-3) are determined, we have the following algorithm for skeleton decomposition. The main idea of our algorithm is to randomly search the graph using Monte Carlo Method, which randomly chooses a node of S to start traversing and randomly chooses an arc of the current node as the exit path.
+
+Algorithm: $Skeleton_Mesh_Decomposition(S, M)$
+Input: The Laplacian skeleton S of a mesh model M;
+Output: The decomposition of S into a set of the least pieces of subgraphs T, each arc of which subtends to an axis by an angle of no larger than ?, where (0.5? ? ?) is the minimum angle subtends to the build plate that allows a facet being printed free of support structure.
+1.  $T = \oslash$; $min = \inf$; count = 0; $max_iter$ = a user defined large constant;
+// initialization
+
+
+
+
