@@ -48,7 +48,10 @@
 \usepackage{graphics} % for EPS, load graphicx instead
 \usepackage{times}    % comment if you want LaTeX's default font
 \usepackage{url}      % llt: nicely formatted URLs
-
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  %Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} %UseOutput in the format of Algorithm
 
 \newcommand\tabhead[1]{\small\textbf{#1}}
 
@@ -124,6 +127,8 @@
 
 %-------------------------------------------------------------------------
 \input{introduction.tex}
+
+
 
 %-------------------------------------------------------------------------
 \input{related_work}
