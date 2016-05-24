@@ -3,7 +3,24 @@
 In nature, most organic models ubiquitously contain cylindrical parts \cite{Zhou:2015:GCD}, e.g., arms, legs, etc. Moreover, an cylindrical part can be well represented by its corresponding 1D skeleton. Based on this property, a chunk of a mesh model can be fabricated free of support if its corresponding skeleton piece subtends to a printing direction by an angle of no large than $\theta$, where $\theta$ is a printer-dependent threshold value determined by experiments. Hence, our problem naturally becomes partitioning a given 1{D} skeleton into sub-skeletons such that each sub-skeleton merits desirable printing properties including support-free and gravitational stable. In the remainder of the paper, by model we mean an organic mesh model of natural life form or articulated figures preserving nice topology features of real lives.
 
 \textbf{Choise of skeleton.} Compared to natural skeletons, the medial axis can describe the topology of a mesh model more precisely \cite{ZhangXWYTW15}. However, a medial axis of a 3D mesh model is a 2D surface which cannot be conveniently applied to describe the critical topology changes of the model. Additionally, the medial axis consists of intersecting pieces of planes and conic surfaces, presenting significant complications to algorithms that attempt to construct 3D medial axes.
-Reeb graph provides a possible choice for 1D skeleton. During the generation process of any reeb graph, the slicing direction and the position of the representative node on each slide (a connected region) seriously influence the choice of critical points and therefore generation of the Reeb graph. However, the determination of suitable slicing direction and representative nodes is an intractable problem. We resort to the 1D Laplacian skeleton proposed by \cite{AuTCCL08} which is extracted by shrinking the mesh model using Laplacian smoothing, such 1D Laplacian skeleton provides an excellent choice for reasonably describing the geometrical and topological variations of any 3{D} model \cite{AuTCCL08}. Figure \ref{} shows an example of the Laplacian skeleton.
+Reeb graph provides a possible choice for 1D skeleton. During the generation process of any reeb graph, the slicing direction and the position of the representative node on each slide (a connected region) seriously influence the choice of critical points and therefore generation of the Reeb graph. However, the determination of suitable slicing direction and representative nodes is an intractable problem. We resort to the 1D Laplacian skeleton proposed by \cite{AuTCCL08} which is extracted by shrinking the mesh model using Laplacian smoothing, such 1D Laplacian skeleton provides an excellent choice for reasonably describing the geometrical and topological variations of any 3{D} model \cite{AuTCCL08}. Figure \ref{fig:ex1} shows an example of the Laplacian skeleton.
+
+\begin{figure}[tbp]
+  \centering
+  \mbox{} \hfill
+  % the following command controls the width of the embedded PS file
+  % (relative to the width of the current column)
+  \includegraphics[width=0.4\textwidth]{figs/tree_with_skeleton.png}
+  % replacing the above command with the one below will explicitly set
+  % the bounding box of the PS figure to the rectangle (xl,yl),(xh,yh).
+  % It will also prevent LaTeX from reading the PS file to determine
+  % the bounding box (i.e., it will speed up the compilation process)
+  % \includegraphics[width=.3\linewidth, bb=39 696 126 756]{sampleFi
+  \caption{\label{fig:ex1}%
+           An illustration of a 3D mesh model and its 1D Laplacian skeleton. }
+\end{figure}
+
+
 
 \textbf{Problem Statement.} Our goal is hence to decompose the 1D Laplacian skeleton of the model into the least support-free subgraphs leads to a partition of the model into the least printable parts free of support structures and cracks on the final assembly model. In addition, since support structures result in bumpy supported areas, support-free fabrication also means a nice preservation of the surface quality of the parts. Further, a minimization of the number of cuts and the total cutting length means a minimum amount of seams and their lengths on the assembled model. Therefore, we focus on these two problems in this paper.
 
