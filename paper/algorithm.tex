@@ -1,5 +1,5 @@
 \section{Algorithm}
-Let $M$ denote the mesh model, and let S denote the Laplacian skeleton obtained via \cite{AuTCCL08}. We propose an algorithm for partitioning S into a minimum set of \emph{disjoint} subgraphs, each of which can be fabricated in a 3D printer without using support structures. Decomposing S into two pieces can be done by duplicating a node $v$ multiple times in accordance to the number of the graph edges (arcs) incident to $v$; and, partitioning $M$ at node $v$ requires the determination of the position and normal of a cutting plane. To guarantee an aesthetical look on the resulting surface with shortest seams, we need a constraint to minimize the peripheral length of the cut in terms of the position and normal of the cutting plane. Once the cutting plane is determined, it affects the printing direction and thus the shape of the subgraph. Hence, this is an essential \emph{chicken-and-egg} problem. In addition, we also need to consider the printing volume constraint, i.e., the volume of the printing model should be within the working volume of a given 3{D} printer.
+\textbf{Skeleton Partition.} Let $M$ denote the mesh model, and let S denote the Laplacian skeleton obtained via \cite{AuTCCL08}. We propose an algorithm for partitioning S into a minimum set of \emph{disjoint} subgraphs, each of which can be fabricated in a 3D printer without using support structures. Decomposing S into two pieces can be done by duplicating a node $v$ multiple times in accordance to the number of the graph edges (arcs) incident to $v$; and, partitioning $M$ at node $v$ requires the determination of the position and normal of a cutting plane. To guarantee an aesthetical look on the resulting surface with shortest seams, we need a constraint to minimize the peripheral length of the cut in terms of the position and normal of the cutting plane. Once the cutting plane is determined, it affects the printing direction and thus the shape of the subgraph. Hence, this is an essential \emph{chicken-and-egg} problem. In addition, we also need to consider the printing volume constraint, i.e., the volume of the printing model should be within the working volume of a given 3{D} printer.
 
 To summarize, our objectives are the minimization of (1) the number of partitioned components $N$; (2) the total peripheral length of each cut $L_i$, i.e., $\Sigma L_i$. The constraints of the problem are as follows:
 (i) Each arc of the partitioned subgraph $H_i$ subtends to an axis by an angle of no larger than $\theta$, where $\theta$ is defined based on printing experiments without using any support structure. This guarantees that the corresponding mesh component is support-free during the printing process;
@@ -116,7 +116,7 @@ A node $v$ of Laplacian skeleton $S$, an angular value $\theta$;
 \end{algorithm}
 
 
-In line 2 of $Tirm_BFS$, the BFS process randomly chooses an arc incident to $v$ to proceed on. In order to guarantee a greater chance of converging to the optimal result in a short time, we apply a training-and-learning procedure for the first 1000 runs. Formally, let $N_v$ be the number of times an arc is chosen as the exit arc when node $v$ is visited. Given the data of the first 1000 runs, as a node $v$ is visited, the probability of choosing an arc $e$ as an outgoing arc in the subsequent runs is,
+In line 2 of $Tirm\_BFS$, the BFS process randomly chooses an arc incident to $v$ to proceed on. In order to guarantee a greater chance of converging to the optimal result in a short time, we apply a training-and-learning procedure for the first 1000 runs. Formally, let $N_v$ be the number of times an arc is chosen as the exit arc when node $v$ is visited. Given the data of the first 1000 runs, as a node $v$ is visited, the probability of choosing an arc $e$ as an outgoing arc in the subsequent runs is,
 
 	$P(v, e) = N_v/1000$	(7)
 
@@ -135,7 +135,7 @@ Otherwise, $c$ is reachable from $v$ via a directed path without passing through
 
                    (a)                      (b)
 
-Figure WSX: Illustration of the inclusion of a directed arc into a maximal subgraph by $Trim_BFS$.
+Figure WSX: Illustration of the inclusion of a directed arc into a maximal subgraph by $Trim\_BFS$.
 
 
 
