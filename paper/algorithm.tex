@@ -58,19 +58,18 @@ A new arc $e_k$ is taken by Function $Tirm\_BFS$ if and only if one of the follo
 (2) $A(\rightharpoonup{oc_{i,j}}, \hat{e_k})  \leq \pi - 2\theta$, where $q = O( \hat{e_k}, c_{i,j}) \cap B_{i,j}$.
 
 
-\textcolor{red}{Figure QAZ: Illustration of unit vectors, unit sphere, spherical disks, and the determination of taking a new edge in $Trim_BFS$.}
+\textcolor{red}{Figure QAZ: Illustration of unit vectors, unit sphere, spherical disks, and the determination of taking a new edge in $Trim\_BFS$.}
 
-\textbf{Mesh Partition.} Although the skeleton partition tells us a rough sketch of the mesh partition, i.e., the cutting plane should be in the vicinity of each node $v$ incident to two distinct subgraphs. Yet we need to determine the exact positions of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting principle:
+\textbf{Mesh Partition.} The skeleton partition tells us a rough sketch of the mesh partition, i.e., the cutting plane should be in the vicinity of each node $v$ incident to two distinct subgraphs. Yet we need to determine the exact positions and orientations of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting principle:
 
-The Cutting Scheme for $M$:
-See Figure TJK, at the position of node $v$, define two fillets each of which contains all planes that orthogonal to the vectors in $cone(H_i)$ or $cone(H_j)$, let $fillet(H_i)$ and $fillet(H_j)$ be the two fillets respectively. Depending on the relative position of $fillet(H_i)$ and $fillet(H_j)$, we have the following cases: $(fillet(Hi) \cap fillet(Hj)) / {v} \neq \emptyset$;
-Then randomly sample a set of cutting planes from $(fillet(Hi) \cap Fillet(Hj)) / {v}$, and determine the one achieving the minimum cutting length $(fillet(H_i) ¡É fillet(H_j)) = {v}$.
-In this case, two cuts $c_1$ and $c_2$ are inevitable in order to separate the mesh, however, care must be taken as the angle between $c_1$ and $c_2$ should be constrained by $A(n(c_1), n(c_2)) \leq \pi/2+ \theta$. If this constraint is violated, one more cut in between $c_1$ and $c_2$ is required; while the base of each partitioned component should be constrained by $b(H_i) ¡Ý \tau$ and $b(H_j) ¡Ý \tau$. If any of the constraints is not satisfied, we shall translate the fillets along the build direction in an opposite sense until the constraints are satisfied (See Figure TJK). In this process, if the translation hits a induce
+In Figure TJK, at the position of node $v$, we define two fillets, each of which contains all planes that orthogonal to the vectors in $cone(H_i)$ or $cone(H_j)$ and passing through $v$, denoted as $fillet(H_i)$ and $fillet(H_j)$ respectively. Depending on the relative position of $fillet(H_i)$ and $fillet(H_j)$, we have the following cases: $(fillet(Hi) \cap fillet(Hj)) - \{v\} \neq \emptyset$;
+Then randomly sample a set of cutting planes from $(fillet(Hi) \cap Fillet(Hj)) - \{v\}$, and determine the one achieving the minimum cutting length.
+In this case, two cuts $c_1$ and $c_2$ are inevitable in order to separate the mesh, however, care must be taken as the angle between $c_1$ and $c_2$ should be constrained by $A(n(c_1), n(c_2)) \leq \pi/2+ \theta$. If this constraint is violated, one more cut in between $c_1$ and $c_2$ is required; while the base of each partitioned component should be constrained by $b(H_i) \geq \tau$ and $b(H_j) \geq \tau$. If any of the constraints is not satisfied, we shall translate the fillets along the build direction in an opposite sense until the constraints are satisfied (See Figure TJK). In this process, if the translation hits a induce
 
 
 \textcolor{red}{Figure TJK: Illustration of two fillets incident at a common node.}
 
-Let $R(v)$ be the set of reflex vertices on M that are incident to v during the Laplacian shrinking process, we shall truncate $R(v)$ such that the non-significant reflex vertices are removed away. Here, given a vertex vi and any of its neighbor $v_j$, $v_i$ is reflex if $(v_i - v_j)(n_j - n_i)$ is nonnegative, the significance of a reflex vertex can be quantified as the magnitude of $(v_i - v_j)(n_j - n_i)$ \cite{au2012mesh}.
+Let $R(v)$ be the set of reflex vertices on M that are incident to v during the Laplacian shrinking process \cite{AuTCCL08}, we shall truncate $R(v)$ such that the non-significant reflex vertices are removed away. Here, given a vertex vi and any of its neighbor $v_j$, $v_i$ is reflex if $(v_i - v_j)(n_j - n_i)$ is nonnegative for some $j$, we quantify the significance of a reflex vertex as the magnitude of $(v_i - v_j)(n_j - n_i)$ \cite{au2012mesh}.
 
 
 
