@@ -1,0 +1,295 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{\uppercase{WWY{\etalchar{*}}13}}
+
+\bibitem[ATC{\etalchar{*}}08]{AuTCCL08}
+\textsc{Au O.~K., Tai C., Chu H., Cohen{-}Or D., Lee T.}:
+\newblock Skeleton extraction by mesh contraction.
+\newblock \emph{{ACM} Trans. Graph. 27}, 3 (2008).
+\newblock URL: \url{http://doi.acm.org/10.1145/1360612.1360643}, \href
+  {http://dx.doi.org/10.1145/1360612.1360643}
+  {\path{doi:10.1145/1360612.1360643}}.
+
+\bibitem[AZC{\etalchar{*}}12]{au2012mesh}
+\textsc{Au O. K.-C., Zheng Y., Chen M., Xu P., Tai C.-L.}:
+\newblock Mesh segmentation with concavity-aware fields.
+\newblock \emph{Visualization and Computer Graphics, IEEE Transactions on 18},
+  7 (2012), 1125--1134.
+
+\bibitem[BBJP12]{BacherBJP12}
+\textsc{B{\"{a}}cher M., Bickel B., James D.~L., Pfister H.}:
+\newblock Fabricating articulated characters from skinned meshes.
+\newblock \emph{{ACM} Trans. Graph. 31}, 4 (2012), 47:1--47:9.
+\newblock URL: \url{http://doi.acm.org/10.1145/2185520.2185543}, \href
+  {http://dx.doi.org/10.1145/2185520.2185543}
+  {\path{doi:10.1145/2185520.2185543}}.
+
+\bibitem[BWBS14]{Bacher14}
+\textsc{B{\"{a}}cher M., Whiting E., Bickel B., Sorkine{-}Hornung O.}:
+\newblock Spin-it: optimizing moment of inertia for spinnable objects.
+\newblock \emph{{ACM} Trans. Graph. 33}, 4 (2014), 96:1--96:10.
+\newblock URL: \url{http://doi.acm.org/10.1145/2601097.2601157}, \href
+  {http://dx.doi.org/10.1145/2601097.2601157}
+  {\path{doi:10.1145/2601097.2601157}}.
+
+\bibitem[CCA{\etalchar{*}}12]{CaliCAKSKW12}
+\textsc{Cal{\`{\i}} J., Calian D.~A., Amati C., Kleinberger R., Steed A., Kautz
+  J., Weyrich T.}:
+\newblock 3d-printing of non-assembly, articulated models.
+\newblock \emph{{ACM} Trans. Graph. 31}, 6 (2012), 130.
+\newblock URL: \url{http://doi.acm.org/10.1145/2366145.2366149}, \href
+  {http://dx.doi.org/10.1145/2366145.2366149}
+  {\path{doi:10.1145/2366145.2366149}}.
+
+\bibitem[CGF09]{ChenGF09}
+\textsc{Chen X., Golovinskiy A., Funkhouser T.~A.}:
+\newblock A benchmark for 3d mesh segmentation.
+\newblock \emph{{ACM} Trans. Graph. 28}, 3 (2009).
+
+\bibitem[CLM{\etalchar{*}}13]{CeylanLMAP13}
+\textsc{Ceylan D., Li W., Mitra N.~J., Agrawala M., Pauly M.}:
+\newblock Designing and fabricating mechanical automata from mocap sequences.
+\newblock \emph{{ACM} Trans. Graph. 32}, 6 (2013), 186:1--186:11.
+\newblock URL: \url{http://doi.acm.org/10.1145/2508363.2508400}, \href
+  {http://dx.doi.org/10.1145/2508363.2508400}
+  {\path{doi:10.1145/2508363.2508400}}.
+
+\bibitem[CTN{\etalchar{*}}13]{CorosTNSFSMB13}
+\textsc{Coros S., Thomaszewski B., Noris G., Sueda S., Forberg M., Sumner
+  R.~W., Matusik W., Bickel B.}:
+\newblock Computational design of mechanical characters.
+\newblock \emph{{ACM} Trans. Graph. 32}, 4 (2013), 83:1--83:12.
+\newblock URL: \url{http://doi.acm.org/10.1145/2461912.2461953}, \href
+  {http://dx.doi.org/10.1145/2461912.2461953}
+  {\path{doi:10.1145/2461912.2461953}}.
+
+\bibitem[DHL14]{DumasHL14}
+\textsc{Dumas J., Hergel J., Lefebvre S.}:
+\newblock Bridging the gap: automated steady scaffoldings for 3d printing.
+\newblock \emph{{ACM} Trans. Graph. 33}, 4 (2014), 98:1--98:10.
+\newblock URL: \url{http://doi.acm.org/10.1145/2601097.2601153}, \href
+  {http://dx.doi.org/10.1145/2601097.2601153}
+  {\path{doi:10.1145/2601097.2601153}}.
+
+\bibitem[FK07]{Fukunaga:2007}
+\textsc{Fukunaga A.~S., Korf R.~E.}:
+\newblock Bin completion algorithms for multicontainer packing, knapsack, and
+  covering problems.
+\newblock \emph{J. Artif. Int. Res. 28}, 1 (Mar. 2007), 393--429.
+\newblock URL: \url{http://dl.acm.org/citation.cfm?id=1622591.1622602}.
+
+\bibitem[GF08]{Golovinskiy:2008}
+\textsc{Golovinskiy A., Funkhouser T.}:
+\newblock Randomized cuts for {3D} mesh analysis.
+\newblock \emph{ACM Transactions on Graphics (Proc. SIGGRAPH ASIA) 27}, 5 (Dec.
+  2008).
+
+\bibitem[GP08]{Garcia:2008:IIG}
+\textsc{Garc\'{\i}a I., Patow G.}:
+\newblock Igt: inverse geometric textures.
+\newblock \emph{ACM Trans. Graph. 27} (December 2008), 137:1--137:9.
+
+\bibitem[HBA13]{HildebrandBA13}
+\textsc{Hildebrand K., Bickel B., Alexa M.}:
+\newblock Orthogonal slicing for additive manufacturing.
+\newblock \emph{Computers {\&} Graphics 37}, 6 (2013), 669--675.
+\newblock URL: \url{http://dx.doi.org/10.1016/j.cag.2013.05.011}, \href
+  {http://dx.doi.org/10.1016/j.cag.2013.05.011}
+  {\path{doi:10.1016/j.cag.2013.05.011}}.
+
+\bibitem[HFW11]{hao2011efficient}
+\textsc{Hao J., Fang L., Williams R.~E.}:
+\newblock An efficient curvature-based partitioning of large-scale stl models.
+\newblock \emph{Rapid Prototyping Journal 17}, 2 (2011), 116--127.
+
+\bibitem[HLZCO]{Hu_siga14}
+\textsc{Hu R., Li H., Zhang H., Cohen-Or D.}:
+\newblock Approximate pyramidal shape decomposition.
+
+\bibitem[HR84]{hoffman1984parts}
+\textsc{Hoffman D.~D., Richards W.~A.}:
+\newblock Parts of recognition.
+\newblock \emph{Cognition 18}, 1 (1984), 65--96.
+
+\bibitem[HS97]{hoffman1997salience}
+\textsc{Hoffman D.~D., Singh M.}:
+\newblock Salience of visual parts.
+\newblock \emph{Cognition 63}, 1 (1997), 29--78.
+
+\bibitem[JLCW06]{JiLCW06}
+\textsc{Ji Z., Liu L., Chen Z., Wang G.}:
+\newblock Easy mesh cutting.
+\newblock \emph{Comput. Graph. Forum 25}, 3 (2006), 283--291.
+
+\bibitem[KLT05]{KatzLT05}
+\textsc{Katz S., Leifman G., Tal A.}:
+\newblock Mesh segmentation using feature point and core extraction.
+\newblock \emph{The Visual Computer 21}, 8-10 (2005), 649--658.
+
+\bibitem[KT03]{KatzT03}
+\textsc{Katz S., Tal A.}:
+\newblock Hierarchical mesh decomposition using fuzzy clustering and cuts.
+\newblock \emph{{ACM} Trans. Graph. 22}, 3 (2003), 954--961.
+
+\bibitem[LBRM12]{LuoBRM12}
+\textsc{Luo L., Baran I., Rusinkiewicz S., Matusik W.}:
+\newblock Chopper: partitioning models into 3d-printable parts.
+\newblock \emph{{ACM} Trans. Graph. 31}, 6 (2012), 129.
+\newblock URL: \url{http://doi.acm.org/10.1145/2366145.2366148}, \href
+  {http://dx.doi.org/10.1145/2366145.2366148}
+  {\path{doi:10.1145/2366145.2366148}}.
+
+\bibitem[LKA06]{lien2006simultaneous}
+\textsc{Lien J.-M., Keyser J., Amato N.~M.}:
+\newblock Simultaneous shape decomposition and skeletonization.
+\newblock In \emph{Proceedings of the 2006 ACM symposium on Solid and physical
+  modeling} (2006), ACM, pp.~219--228.
+
+\bibitem[LSZ{\etalchar{*}}14]{LuSZWFCSTCC14}
+\textsc{Lu L., Sharf A., Zhao H., Wei Y., Fan Q., Chen X., Savoye Y., Tu C.,
+  Cohen{-}Or D., Chen B.}:
+\newblock Build-to-last: strength to weight 3d printed objects.
+\newblock \emph{{ACM} Trans. Graph. 33}, 4 (2014), 97:1--97:10.
+\newblock URL: \url{http://doi.acm.org/10.1145/2601097.2601168}, \href
+  {http://dx.doi.org/10.1145/2601097.2601168}
+  {\path{doi:10.1145/2601097.2601168}}.
+
+\bibitem[LZ07]{LiuZ07}
+\textsc{Liu R., Zhang H.}:
+\newblock Mesh segmentation via spectral embedding and contour analysis.
+\newblock \emph{Comput. Graph. Forum 26}, 3 (2007), 385--394.
+
+\bibitem[PD11]{padhye2011multi}
+\textsc{Padhye N., Deb K.}:
+\newblock Multi-objective optimisation and multi-criteria decision making in
+  sls using evolutionary approaches.
+\newblock \emph{Rapid Prototyping Journal 17}, 6 (2011), 458--478.
+
+\bibitem[PWLS13]{PrevostWLS13}
+\textsc{Pr{\'{e}}vost R., Whiting E., Lefebvre S., Sorkine{-}Hornung O.}:
+\newblock Make it stand: balancing shapes for 3d fabrication.
+\newblock \emph{{ACM} Trans. Graph. 32}, 4 (2013), 81:1--81:10.
+\newblock URL: \url{http://doi.acm.org/10.1145/2461912.2461957}, \href
+  {http://dx.doi.org/10.1145/2461912.2461957}
+  {\path{doi:10.1145/2461912.2461957}}.
+
+\bibitem[RT07]{reniers2007skeleton}
+\textsc{Reniers D., Telea A.}:
+\newblock Skeleton-based hierarchical shape segmentation.
+\newblock In \emph{Shape Modeling and Applications, 2007. SMI'07. IEEE
+  International Conference on} (2007), IEEE, pp.~179--188.
+
+\bibitem[SFC12]{SongFC12}
+\textsc{Song P., Fu C., Cohen{-}Or D.}:
+\newblock Recursive interlocking puzzles.
+\newblock \emph{{ACM} Trans. Graph. 31}, 6 (2012), 128.
+\newblock URL: \url{http://doi.acm.org/10.1145/2366145.2366147}, \href
+  {http://dx.doi.org/10.1145/2366145.2366147}
+  {\path{doi:10.1145/2366145.2366147}}.
+
+\bibitem[SFLF15]{SongFLF15}
+\textsc{Song P., Fu Z., Liu L., Fu C.}:
+\newblock Printing 3d objects with interlocking parts.
+\newblock \emph{Computer Aided Geometric Design 35-36} (2015), 137--148.
+\newblock URL: \url{http://dx.doi.org/10.1016/j.cagd.2015.03.020}, \href
+  {http://dx.doi.org/10.1016/j.cagd.2015.03.020}
+  {\path{doi:10.1016/j.cagd.2015.03.020}}.
+
+\bibitem[Sha08]{Shamir08}
+\textsc{Shamir A.}:
+\newblock A survey on mesh segmentation techniques.
+\newblock \emph{Comput. Graph. Forum 27}, 6 (2008), 1539--1556.
+
+\bibitem[STC{\etalchar{*}}13]{SkourasTCBG13}
+\textsc{Skouras M., Thomaszewski B., Coros S., Bickel B., Gross M.~H.}:
+\newblock Computational design of actuated deformable characters.
+\newblock \emph{{ACM} Trans. Graph. 32}, 4 (2013), 82:1--82:10.
+\newblock URL: \url{http://doi.acm.org/10.1145/2461912.2461979}, \href
+  {http://dx.doi.org/10.1145/2461912.2461979}
+  {\path{doi:10.1145/2461912.2461979}}.
+
+\bibitem[SVB{\etalchar{*}}12]{StavaVBCM12}
+\textsc{Stava O., Vanek J., Benes B., Carr N.~A., Mech R.}:
+\newblock Stress relief: improving structural strength of 3d printable objects.
+\newblock \emph{{ACM} Trans. Graph. 31}, 4 (2012), 48:1--48:11.
+\newblock URL: \url{http://doi.acm.org/10.1145/2185520.2185544}, \href
+  {http://dx.doi.org/10.1145/2185520.2185544}
+  {\path{doi:10.1145/2185520.2185544}}.
+
+\bibitem[US13]{Umetani:2013:CSA}
+\textsc{Umetani N., Schmidt R.}:
+\newblock Cross-sectional structural analysis for 3d printing optimization.
+\newblock In \emph{SIGGRAPH Asia 2013 Technical Briefs} (2013), SA '13,
+  pp.~5:1--5:4.
+
+\bibitem[VGB14a]{VanekGB14}
+\textsc{Vanek J., Galicia J. A.~G., Benes B.}:
+\newblock Clever support: Efficient support structure generation for digital
+  fabrication.
+\newblock \emph{Comput. Graph. Forum 33}, 5 (2014), 117--125.
+\newblock URL: \url{http://dx.doi.org/10.1111/cgf.12437}, \href
+  {http://dx.doi.org/10.1111/cgf.12437} {\path{doi:10.1111/cgf.12437}}.
+
+\bibitem[VGB{\etalchar{*}}14b]{VanekGBMCSM14}
+\textsc{Vanek J., Galicia J. A.~G., Benes B., Mech R., Carr N.~A., Stava O.,
+  Miller G. S.~P.}:
+\newblock Packmerger: {A} 3d print volume optimizer.
+\newblock \emph{Comput. Graph. Forum 33}, 6 (2014), 322--332.
+\newblock URL: \url{http://dx.doi.org/10.1111/cgf.12353}, \href
+  {http://dx.doi.org/10.1111/cgf.12353} {\path{doi:10.1111/cgf.12353}}.
+
+\bibitem[vKFK{\etalchar{*}}14]{KaickFKAC14}
+\textsc{van Kaick O., Fish N., Kleiman Y., Asafi S., Cohen{-}Or D.}:
+\newblock Shape segmentation by approximate convexity analysis.
+\newblock \emph{{ACM} Trans. Graph. 34}, 1 (2014), 4:1--4:11.
+
+\bibitem[WWY{\etalchar{*}}13]{WangWYLTTDCL13}
+\textsc{Wang W., Wang T.~Y., Yang Z., Liu L., Tong X., Tong W., Deng J., Chen
+  F., Liu X.}:
+\newblock Cost-effective printing of 3d objects with skin-frame structures.
+\newblock \emph{{ACM} Trans. Graph. 32}, 6 (2013), 177:1--177:10.
+\newblock URL: \url{http://doi.acm.org/10.1145/2508363.2508382}, \href
+  {http://dx.doi.org/10.1145/2508363.2508382}
+  {\path{doi:10.1145/2508363.2508382}}.
+
+\bibitem[XLF{\etalchar{*}}11]{XinLFWHC11}
+\textsc{Xin S., Lai C., Fu C., Wong T., He Y., Cohen{-}Or D.}:
+\newblock Making burr puzzles from 3d models.
+\newblock \emph{{ACM} Trans. Graph. 30}, 4 (2011), 97.
+\newblock URL: \url{http://doi.acm.org/10.1145/2010324.1964992}, \href
+  {http://dx.doi.org/10.1145/2010324.1964992}
+  {\path{doi:10.1145/2010324.1964992}}.
+
+\bibitem[ZLP{\etalchar{*}}15]{Zhang:2015}
+\textsc{Zhang X., Le X., Panotopoulou A., Whiting E., Wang C. C.~L.}:
+\newblock Perceptual models of preference in 3d printing direction.
+\newblock \emph{ACM Trans. Graph. 34}, 6 (2015), 215:1--215:12.
+
+\bibitem[ZPZ13]{ZhouPZ13}
+\textsc{Zhou Q., Panetta J., Zorin D.}:
+\newblock Worst-case structural analysis.
+\newblock \emph{{ACM} Trans. Graph. 32}, 4 (2013), 137:1--137:12.
+\newblock URL: \url{http://doi.acm.org/10.1145/2461912.2461967}, \href
+  {http://dx.doi.org/10.1145/2461912.2461967}
+  {\path{doi:10.1145/2461912.2461967}}.
+
+\bibitem[ZSGS04]{zhou2004iso}
+\textsc{Zhou K., Synder J., Guo B., Shum H.-Y.}:
+\newblock Iso-charts: stretch-driven mesh parameterization using spectral
+  analysis.
+\newblock In \emph{Proceedings of the 2004 Eurographics/ACM SIGGRAPH symposium
+  on Geometry processing} (2004), ACM, pp.~45--54.
+
+\bibitem[ZXW{\etalchar{*}}15]{ZhangXWYTW15}
+\textsc{Zhang X., Xia Y., Wang J., Yang Z., Tu C., Wang W.}:
+\newblock Medial axis tree - an internal supporting structure for 3d printing.
+\newblock \emph{Computer Aided Geometric Design 35-36} (2015), 149--162.
+\newblock URL: \url{http://dx.doi.org/10.1016/j.cagd.2015.03.012}, \href
+  {http://dx.doi.org/10.1016/j.cagd.2015.03.012}
+  {\path{doi:10.1016/j.cagd.2015.03.012}}.
+
+\bibitem[ZYH{\etalchar{*}}15]{Zhou:2015:GCD}
+\textsc{Zhou Y., Yin K., Huang H., Zhang H., Gong M., Cohen-Or D.}:
+\newblock Generalized cylinder decomposition.
+\newblock \emph{ACM Trans. Graph. 34}, 6 (Oct. 2015), 171:1--171:14.
+
+\end{thebibliography}
