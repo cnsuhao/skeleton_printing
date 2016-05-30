@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.21)  28 MAY 2016 21:19
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.21)  30 MAY 2016 23:25
 entering extended mode
 **C:/Users/user/Desktop/Zheng*Youyi/skeleton_printing/paper/skeleton_printing.t
 ex
@@ -303,9 +303,54 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@uldp=\dimen117
 \SOUL@ulht=\dimen118
 )
+(C:\CTEX\UserData\tex\latex\ntheorem\ntheorem.sty
+Style `ntheorem', Version 1.33 <2011/08/15>
+Package: ntheorem 2011/08/15 1.33
+(C:\CTEX\MiKTeX\tex\latex\base\ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\theorem@style=\toks27
+\theorem@@style=\toks28
+\theorembodyfont=\toks29
+\theoremnumbering=\toks30
+\theorempreskipamount=\skip49
+\theorempostskipamount=\skip50
+\theoremframepreskipamount=\skip51
+\theoremframepostskipamount=\skip52
+\theoreminframepreskipamount=\skip53
+\theoreminframepostskipamount=\skip54
+\theorem@preskip=\toks31
+\theorem@postskip=\toks32
+\theorem@framepreskip=\toks33
+\theorem@framepostskip=\toks34
+\theorem@inframepreskip=\toks35
+\theorem@inframepostskip=\toks36
+\theoremindent=\dimen119
+\theorem@indent=\dimen120
+\theoremrightindent=\dimen121
+\theorem@rightindent=\dimen122
+\theoremheaderfont=\toks37
+\theoremseparator=\toks38
+\theoremprework=\toks39
+\theorempostwork=\toks40
+\theoremsymbol=\toks41
+\qedsymbol=\toks42
+\theoremkeyword=\toks43
+\qedsymbol=\toks44
+\thm@topsep=\skip55
+\thm@topsepadd=\skip56
+Package ntheorem Info: Option `thmmarks' loaded on input line 1175.
+\c@endNonectr=\count111
+\c@currNonectr=\count112
+\mysavskip=\skip57
+Package ntheorem Info: option `amsmath' handling for `thmmarks' loaded on input
+ line 1175.
+\thm@amstmpdepth=\dimen123
+\tagwidth=\dimen124
+)
 (C:\CTEX\UserData\tex\latex\preprint\balance.sty
 Package: balance 1999/02/23 4.3 (PWD)
-\oldvsize=\dimen119
+\oldvsize=\dimen125
 )
 (C:\CTEX\MiKTeX\tex\latex\psnfss\times.sty
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
@@ -316,26 +361,23 @@ nment
 
 (C:\CTEX\MiKTeX\tex\latex\float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count111
-\float@exts=\toks27
+\c@float@type=\count113
+\float@exts=\toks45
 \float@box=\box28
-\@float@everytoks=\toks28
+\@float@everytoks=\toks46
 \@floatcapt=\box29
 )
-(C:\CTEX\MiKTeX\tex\latex\base\ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-)
-\@float@every@algorithm=\toks29
-\c@algorithm=\count112
+\@float@every@algorithm=\toks47
+\c@algorithm=\count114
 )
 (C:\CTEX\UserData\tex\latex\algorithms\algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count113
-\c@ALC@line=\count114
-\c@ALC@rem=\count115
-\c@ALC@depth=\count116
-\ALC@tlm=\skip49
-\algorithmicindent=\skip50
+\c@ALC@unique=\count115
+\c@ALC@line=\count116
+\c@ALC@rem=\count117
+\c@ALC@depth=\count118
+\ALC@tlm=\skip58
+\algorithmicindent=\skip59
 )
 ("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\customized_commands
 .sty"
@@ -344,7 +386,9 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 ")
 ("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\review_commands.sty
 "
-\c@ctodo=\count117
+\c@currctodoctr=\count119
+\c@endctodoctr=\count120
+\c@ctodo=\count121
 ))
 ("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\author_named_commen
 t.sty")
@@ -357,33 +401,33 @@ LaTeX Warning: Label `alg:Framwork' multiply defined.
 LaTeX Warning: Label `code:fram:select' multiply defined.
 
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 107.
+LaTeX Font Info:    ... okay on input line 107.
  (C:\CTEX\MiKTeX\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count118
-\scratchdimen=\dimen120
+\scratchcounter=\count122
+\scratchdimen=\dimen126
 \scratchbox=\box30
-\nofMPsegments=\count119
-\nofMParguments=\count120
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count121
-\MPscratchDim=\dimen121
-\MPnumerator=\count122
-\makeMPintoPDFobject=\count123
-\everyMPtoPDFconversion=\toks31
+\nofMPsegments=\count123
+\nofMParguments=\count124
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count125
+\MPscratchDim=\dimen127
+\MPnumerator=\count126
+\makeMPintoPDFobject=\count127
+\everyMPtoPDFconversion=\toks49
 )
 \AtBeginShipoutBox=\box31
 
@@ -391,46 +435,46 @@ LaTeX Font Info:    ... okay on input line 105.
 Package hyperref Warning: Height of page (\paperheight) is invalid (0.0pt),
 (hyperref)                using 11in.
 
-Package hyperref Info: Link coloring ON on input line 105.
+Package hyperref Info: Link coloring ON on input line 107.
 (C:\CTEX\MiKTeX\tex\latex\hyperref\nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
 (C:\CTEX\MiKTeX\tex\generic\oberdiek\gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count124
+\c@section@level=\count128
 )
-LaTeX Info: Redefining \ref on input line 105.
-LaTeX Info: Redefining \pageref on input line 105.
-LaTeX Info: Redefining \nameref on input line 105.
+LaTeX Info: Redefining \ref on input line 107.
+LaTeX Info: Redefining \pageref on input line 107.
+LaTeX Info: Redefining \nameref on input line 107.
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 115.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 117.
 LaTeX Font Info:    Try loading font information for OT1+ptmcm on input line 11
-5.
+7.
 
 (C:\CTEX\MiKTeX\tex\latex\psnfss\ot1ptmcm.fd
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
 LaTeX Font Info:    Try loading font information for OML+ptmcm on input line 11
-5.
+7.
 
 (C:\CTEX\MiKTeX\tex\latex\psnfss\omlptmcm.fd
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
 LaTeX Font Info:    Try loading font information for OMX+psycm on input line 11
-5.
+7.
 
 (C:\CTEX\MiKTeX\tex\latex\psnfss\omxpsycm.fd
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 115.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 117.
 
 
 (C:\CTEX\MiKTeX\tex\latex\psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 116.
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 118.
 
 ("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\introduction.tex"
 [1{C:/CTEX/UserData/pdftex/config/pdftex.map{Unicode.sfd}{UGBK.sfd}}
@@ -447,28 +491,32 @@ Package pdftex.def Info: figs/tree_with_skeleton.png used on input line 11.
 (pdftex.def)             Requested size: 201.59692pt x 261.50795pt.
 )
 ("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\algorithm.tex"
-Missing character: There is no ¡ in font zptmcmr!
-Missing character: There is no Ü in font zptmcmr!
-Missing character: There is no ¡ in font zptmcmr!
-Missing character: There is no Ü in font zptmcmr!
+Underfull \vbox (badness 4181) has occurred while \output is active []
 
-[3pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
-has been already used, duplicate ignored
+ [3pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.24 
-      <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/tree_with
-_skeleton.png>]
+l.20 \end{equation*}
+                     <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper
+/figs/tree_with_skeleton.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 26.
- <figs/take_arc.png, id=126, 246.9225pt x 207.02344pt>
+
+<figs/proof.png, id=127, 282.30469pt x 279.29344pt>
+File: figs/proof.png Graphic file (type png)
+ <use figs/proof.png>
+Package pdftex.def Info: figs/proof.png used on input line 68.
+(pdftex.def)             Requested size: 201.59692pt x 199.45038pt.
+
+[4] <figs/take_arc.png, id=156, 335.00156pt x 206.27063pt>
 File: figs/take_arc.png Graphic file (type png)
 
 <use figs/take_arc.png>
-Package pdftex.def Info: figs/take_arc.png used on input line 64.
-(pdftex.def)             Requested size: 201.59692pt x 169.02112pt.
- <figs/fillets.png, id=130, 380.17032pt x 194.97844pt>
+Package pdftex.def Info: figs/take_arc.png used on input line 87.
+(pdftex.def)             Requested size: 201.59692pt x 124.12842pt.
+ <figs/fillets.png, id=157, 380.17032pt x 194.97844pt>
 File: figs/fillets.png Graphic file (type png)
 
 <use figs/fillets.png>
@@ -479,95 +527,72 @@ Overfull \hbox (12.0pt too wide) in paragraph at lines 94--97
  [] 
  []
 
-[4pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
+[5pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.103 
-       <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/take_arc
-.png>] <figs/cross.png, id=159, 166.37157pt x 167.87718pt>
-File: figs/cross.png Graphic file (type png)
-
-<use figs/cross.png>
-Package pdftex.def Info: figs/cross.png used on input line 114.
-(pdftex.def)             Requested size: 151.20154pt x 152.5789pt.
-
-<figs/forward_tracing.png, id=160, 289.08pt x 222.07968pt>
-File: figs/forward_tracing.png Graphic file (type png)
-
-<use figs/forward_tracing.png>
-Package pdftex.def Info: figs/forward_tracing.png used on input line 125.
-(pdftex.def)             Requested size: 201.59692pt x 154.87186pt.
-
-<figs/arm.png, id=163, 355.3275pt x 133.24782pt>
-File: figs/arm.png Graphic file (type png)
- <use figs/arm.png>
-Package pdftex.def Info: figs/arm.png used on input line 136.
-(pdftex.def)             Requested size: 226.79846pt x 85.05261pt.
-
-Underfull \hbox (badness 2197) in paragraph at lines 138--138
-[]\T1/ptm/b/n/9 Figure 6: [][]\T1/ptm/m/it/9 Illustration of edit-ing the mesh 
-com-po-nen-t of a
- []
-
-
-Underfull \hbox (badness 2635) in paragraph at lines 138--138
-\T1/ptm/m/it/9 print-able sub-graph:(a) A meat with an over-hange that re-
- []
-
-[5pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
-has been already used, duplicate ignored
+l.108 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.176 
+l.108 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.
 4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.176 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-5}) has been already used, duplicate ignored
+l.108 
+       <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/proof.pn
+g> <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/take_arc.png
+ (PNG copy)> <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/fi
+llets.png>] <figs/forward_tracing.png, id=172, 289.08pt x 222.07968pt>
+File: figs/forward_tracing.png Graphic file (type png)
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.176 
-       <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/fillets.
-png> <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/cross.png>
- <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/forward_tracin
-g.png>] <figs/proof.png, id=176, 282.30469pt x 279.29344pt>
-File: figs/proof.png Graphic file (type png)
+<use figs/forward_tracing.png>
+Package pdftex.def Info: figs/forward_tracing.png used on input line 126.
+(pdftex.def)             Requested size: 201.59692pt x 154.87186pt.
 
-<use figs/proof.png>
-Package pdftex.def Info: figs/proof.png used on input line 195.
-(pdftex.def)             Requested size: 201.59692pt x 199.45038pt.
-)
-("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\results.tex")
-("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\conclusions.tex"
-[6pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) 
-has been already used, duplicate ignored
+<figs/arm.png, id=175, 355.3275pt x 133.24782pt>
+File: figs/arm.png Graphic file (type png)
+ <use figs/arm.png>
+Package pdftex.def Info: figs/arm.png used on input line 137.
+(pdftex.def)             Requested size: 226.79846pt x 85.05261pt.
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1 \section
-            {Conclusion, Limitation, and Future Work}pdfTeX warning (ext4): des
-tination with the same identifier (name{figure.7}) has been already used, dupli
-cate ignored
+Underfull \hbox (badness 2197) in paragraph at lines 139--139
+[]\T1/ptm/b/n/9 Figure 6: [][]\T1/ptm/m/it/9 Illustration of edit-ing the mesh 
+com-po-nen-t of a
+ []
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1 \section
-            {Conclusion, Limitation, and Future Work} <C:/Users/user/Desktop/Zh
-eng Youyi/skeleton_printing/paper/figs/arm.png> <C:/Users/user/Desktop/Zheng Yo
-uyi/skeleton_printing/paper/figs/proof.png>])
+
+Underfull \hbox (badness 2635) in paragraph at lines 139--139
+\T1/ptm/m/it/9 print-able sub-graph:(a) A meat with an over-hange that re-
+ []
+
+) ("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\results.tex")
+("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\conclusions.tex")
 ("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\skeleton_printing.b
 bl"
 ("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\skeleton_printing.b
 rf")
 \tf@brf=\write3
+ [6pdfTeX warning (ext4): destination with the same identifier (name{figure.5})
+ has been already used, duplicate ignored
 
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.11 
+     pdfTeX warning (ext4): destination with the same identifier (name{figure.6
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.11 
+      <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/forward_t
+racing.png> <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper/figs/arm
+.png>]
 Underfull \hbox (badness 5667) in paragraph at lines 33--33
 []\T1/ptm/m/sc/8 Bächer M., Whit-ing E., Bick-el B., Sorkine-
  []
@@ -623,62 +648,44 @@ Underfull \hbox (badness 1107) in paragraph at lines 289--289
 16 / j . cagd . 2015 .$
  []
 
-) <figs/01.jpg, id=322, 973.236pt x 308.352pt>
-File: figs/01.jpg Graphic file (type jpg)
- <use figs/01.jpg>
-Package pdftex.def Info: figs/01.jpg used on input line 167.
-(pdftex.def)             Requested size: 151.20154pt x 47.90227pt.
-File: figs/01.jpg Graphic file (type jpg)
-
-<use figs/01.jpg>
-Package pdftex.def Info: figs/01.jpg used on input line 174.
-(pdftex.def)             Requested size: 151.20154pt x 47.90227pt.
-LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <9> not available
-(Font)              Font shape `T1/ptm/b/it' tried instead on input line 185.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 188.
+)
+\tf@thm=\write4
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 163.
  [8
 
-] [9pdfTeX warning (ext4): destination with the same identifier (name{figure.8}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.188 \end{document}
-                     <C:/Users/user/Desktop/Zheng Youyi/skeleton_printing/paper
-/figs/01.jpg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 188.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 163.
 
 ("C:\Users\user\Desktop\Zheng Youyi\skeleton_printing\paper\skeleton_printing.a
 ux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 188.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 188.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 163.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 163.
 Package rerunfilecheck Info: File `skeleton_printing.brf' has not changed.
-(rerunfilecheck)             Checksum: C34FE774AF2E5D414F027F539A44F0AA;1614.
+(rerunfilecheck)             Checksum: E27EFD366D26E4248F49394C4855413C;1735.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6973 strings out of 495354
- 100160 string characters out of 3183859
- 222891 words of memory out of 3000000
- 9882 multiletter control sequences out of 15000+200000
- 54819 words of font info for 79 fonts, out of 3000000 for 9000
+ 7214 strings out of 495354
+ 103635 string characters out of 3183859
+ 230507 words of memory out of 3000000
+ 10126 multiletter control sequences out of 15000+200000
+ 58763 words of font info for 81 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 32i,16n,25p,2208b,740s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 32i,16n,25p,2231b,742s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/CTEX/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<C:/CTEX/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmmi10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
 10.pfb><C:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/CTEX/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/CTEX/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmsy9.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/CTEX
 /UserData/fonts/type1/urw/symbol/usyr.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/times
-/utmb8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/CTEX/MiKTeX/f
-onts/type1/urw/times/utmr8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/times/utmri8a.p
-fb>
-Output written on skeleton_printing.pdf (9 pages, 688968 bytes).
+/utmb8a.pfb><C:/CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/CTEX/MiKTeX/fo
+nts/type1/urw/times/utmri8a.pfb>
+Output written on skeleton_printing.pdf (8 pages, 446750 bytes).
 PDF statistics:
- 400 PDF objects out of 1000 (max. 8388607)
- 102 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 391 PDF objects out of 1000 (max. 8388607)
+ 99 named destinations out of 1000 (max. 500000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
