@@ -46,6 +46,8 @@
 \usepackage{amsmath}
 \usepackage{color,soul}
 
+\usepackage[thmmarks,amsmath]{ntheorem}
+
 \usepackage{balance}  % to better equalize the last page
 \usepackage{graphics} % for EPS, load graphicx instead
 \usepackage{times}    % comment if you want LaTeX's default font
@@ -156,34 +158,7 @@
 \bibliography{egbibsample}
 
 %-------------------------------------------------------------------------
-\newpage
 
-
-\begin{figure*}[tbp]
-  \centering
-  \mbox{} \hfill
-  % the following command controls the width of the embedded PS file
-  % (relative to the width of the current column)
-  \includegraphics[width=.3\linewidth]{figs/01.jpg}
-  % replacing the above command with the one below will explicitly set
-  % the bounding box of the PS figure to the rectangle (xl,yl),(xh,yh).
-  % It will also prevent LaTeX from reading the PS file to determine
-  % the bounding box (i.e., it will speed up the compilation process)
-  % \includegraphics[width=.3\linewidth, bb=39 696 126 756]{sampleFig}
-  \hfill
-  \includegraphics[width=.3\linewidth]{figs/01.jpg}
-  \hfill \mbox{}
-  \caption{\label{fig:ex3}%
-           For publications with color tables (i.e., publications not offering
-           color throughout the paper) please \textbf{observe}:
-           for the printed version -- and ONLY for the printed
-           version -- color figures have to be placed in the last page.
-           \newline
-           For the electronic version, which will be converted to PDF before
-           making it available electronically, the color images should be
-           embedded within the document. Optionally, other multimedia
-           material may be attached to the electronic version. }
-\end{figure*}
 
 \end{document}
 
