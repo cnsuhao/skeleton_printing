@@ -75,9 +75,9 @@ A node $v$ of Laplacian skeleton $S$, an angular value $\theta$.
 \WHILE  {the current arc $e_k$ of $S$ picked by the BFS process is not empty}
   \IF  {$A(\overrightarrow{oc_{i,j}},  \hat{e_k}) \leq A(\overrightarrow{oc_{i,j}},  \hat{e_i})$}
   \STATE  $H = H \cup {e_k}$;
-  \ENDIF
+  \ELSIF {$A(\overrightarrow{oq},  \hat{e_k}) \leq \pi- 2\theta$}
   \STATE $q = O( \hat{e_k}, c_{i,j}) \cap B_{i,j}$;
-  \IF  {$A(\overrightarrow{oq},  \hat{e_k}) \leq \pi- 2\theta$}
+%  \IF  {$A(\overrightarrow{oq},  \hat{e_k}) \leq \pi- 2\theta$}
   \STATE  $\hat{e_i}=  \hat{e_k}$;
   \STATE $\hat{e_j} =  \overrightarrow{oq}$;
   \STATE  update $B_{i,j}$ and $c_{i,j}$;
