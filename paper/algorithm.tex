@@ -149,7 +149,7 @@ In order to detect whether a cutting plane cut through any subgraph other than $
   \mbox{} \hfill
   \includegraphics[width=0.4\textwidth]{figs/forward_tracing.png}
   \caption{\label{fig:forward_tracing}%
-           2D illustration editing a long arc for cutting.}
+           2D illustration of R(v) and the cuts, all vertices in R(v) are shown in green, and the cuts associated with a vertex are shown in dashed lines:(a) the case of cuts around concave points; (b) the case of cuts on a cylindrical part.}
 \end{figure}
 
 
@@ -158,9 +158,9 @@ Sometimes, it is possible for a mesh component which is not printable free of su
 \begin{figure}[tbp]
   \centering
   \mbox{} \hfill
-  \includegraphics[width=0.45\textwidth]{figs/arm.png}
+  \includegraphics[width=0.3\textwidth]{figs/arm.png}
   \caption{\label{fig:arm}%
-           Illustration of editing the mesh component of a printable subgraph:(a) A meat with an overhange that requires support; (b)Regeneration of the skeleton of the meat by $SkeletonMeshDecomposition$ Algorithm; (c) the partition result by $SkeletonMeshDecomposition$ Algorithm.}
+           Illustration of a mesh component with an overhange that requires support while its corresponding skeleton is support-free}
 \end{figure}
 
 %Finally, if the cut-subgraph constraint (Eq. (5)) is violated, a sequence of iterative cutting is required.
