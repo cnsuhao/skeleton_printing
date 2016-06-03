@@ -15,7 +15,7 @@ We have run our algorithm on various natural or man-made models, and some of the
   \centering
   \includegraphics[width=0.45\textwidth]{figs/programming.png}
   \caption{\label{fig:programming}%
-           Partition examples as the support angle is no larger than $20^{\circ}$. The printing direction of each part is orthogonal to its base (shown in the same color as the part)}
+           Partition examples as $\theta = 70^{\circ}$. The printing direction of each part is orthogonal to its base (shown in the same color as the part)}
 \end{figure}
 
 Experimental Validation: We validated our approach by a set of printing experiments on Zortrax desktop printer, a kind of FDM machine that allows a printing layer thickness of 0.09mm , this is also the layer thickness we used in the printing experiments. The experiments are based on the choice of $\theta = 70^{\circ}$, i.e., all overhangs with an angle of no larger than $20^{\circ}$ with respect to the build platform are given support structures. Zortrax provides a built-in 3D printing software called \emph{Z-suite} can automatically counts the filament of the print material (in meters) and an estimate of the weight of the print material. The following table summarizes the printing material and time costs by the original models and the partitioned models. Our proposed skeleton-based partitioned approach reduce both the printing material and time significantly because the partition reduce both the supported materials inside and outside the models.
