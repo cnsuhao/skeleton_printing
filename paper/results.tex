@@ -13,15 +13,15 @@ We have run our algorithm on various natural or man-made models, and some of the
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=0.45\textwidth]{figs/programming result.png}
-  \caption{\label{fig:programming result}%
+  \includegraphics[width=0.45\textwidth]{figs/programming.png}
+  \caption{\label{fig:programming}%
            Partition examples as the support angle is no larger than 20 degrees. The printing direction of each part is orthogonal to its base (shown in the same color as the part)}
 \end{figure}
 
 Experimental Validation: We validated our approach by a set of printing experiments. The following table summarizes the printing material and time costs by the original models and the partitioned models. The experiments are based on the choice of $\theta$ = 70 degrees.
 
 
-Figure \ref{fig:comparison} shows the comparison of the printing effects of the original models and our partitioned models. Note that the comparison of total cutting length cannot be made since no previous support-free oriented algorithms are available for 3D printed shell models.
+Figure \ref{fig:comparison} shows the comparison of the printing effects of the original models and our partitioned models. Our proposed skeleton-based partitioned approach reduce both the printing material and time significantly because the partition reduce both the supported materials inside and outside the models.
 
 \begin{figure}[tbp]
   \centering
@@ -31,14 +31,12 @@ Figure \ref{fig:comparison} shows the comparison of the printing effects of the 
 \end{figure}
 
 
-
-
-[show the printed model without using any cutting operation, the partitioned CAD model, the assembled printed model, the statistics on time and material saving, for all 12 models]
-
 Although the FDM printing technique requires a small supporting bed for holding the printed model on the printing platform, other printing techniques such as SLA, SLM and SLS may avoid the use of these supporting beds. Therefore, our approach guarantees support-free to the most extent for all exiting printing techniques.
 
-\hl {[Evaluations: how close we are to the global optimum]
+\hl {[Evaluations: how close we are to the global optimum][Limitations: discussion about 1. the strength of our interior, -- future work. 2. cut through salient regions -- hard to balance. etc]}
 
-[Limitations: discussion about 1. the strength of our interior, -- future work. 2. cut through salient regions -- hard to balance. etc] }
+Since the problem of partitioning the skeleton graph into the least number of support-free subgraphs is NP-hard, it is impossible to obtain an optimal result in polynomial time. However, we can evaluate the effectiveness of our approach by judging the topology of some simple models and evaluate how close our partition is far away from a potential optimal result. For example, from Figure \ref{fig:ex1}, under the requirement of $\theta$ = 70 degrees, without looking the detail geometric features we can roughly judge that the deer model requires at least 4 cuts: the tail, the chunk including the legs, the neck, and the head and the horn. Our approach provides a partition of 4 cuts, which is almost near the optimal.
+
+
 
 Our approach is devoted to shell models, it can also be applied to cutting solid models without any problem. However, our approach suffers from a few limitations: for shell models, the thickness of the shells need to be large enough such that no serious deformation is caused during the assembling process. However, the problem of setting the minimum thickness of the model for various parts of the model is a challenging problem, and our current work is restricted to a uniform setting of the shell thickness whose value is determined by an error-and-trial process. Further, the strength guarantee is not elaborated in this work, a possible solution is to use the algorithm in \cite{WangWYLTTDCL13} that distributes the least amount of materials for constructing a truss frame beneath the skin. Finally, our approach may allow a cut that passes through a salience region, which may hurt the appearance of the model. But it is very difficult to make a balance between the two since out cuts are flat. A potential future research is to take care of salience region while making cuts. Finally, as a trade-off, if a spatially curved cut is allowed, then the salience regions can be preserved properly.
