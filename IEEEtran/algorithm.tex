@@ -29,9 +29,9 @@ The idea is to separate the minimization of the two target terms (number of subg
 \REQUIRE~
 The Laplacian skeleton $S$ of a mesh model $M$;
 \ENSURE~
-The decomposition of $S$ into a set of the least pieces of subgraphs $T$, each arc of which subtends to an axis by an angle of no larger than $\theta$;
-\STATE $T = \emptyset$; $min = \inf$; $count$ = 0; $max_iter$ = a user defined large constant;
-\WHILE {$count < max_iter$}
+The decomposition of $S$ into a set of the least pieces of subgraphs $T$ that satisfies constraint (1);
+\STATE $T = \emptyset$; $min = \inf$; $count$ = 0; $max\_iter$ = a user defined large constant;
+\WHILE {$count < max\_iter$}
 \STATE  $G=S$; $U= \emptyset$;
 \WHILE {$G\neq \emptyset$}
 \FOR{$i=1$; $i<| S |$; $i++$ }
@@ -70,24 +70,26 @@ Next we shall show how $Tirm\_BFS(v, G, \theta)$ works to find a locally maximal
 \REQUIRE~
 A node $v$ of Laplacian skeleton $S$, an angular value $\theta$.
 \ENSURE~
- A maximal subgraph $H$ rooted at $v$ and its corresponding mesh component that meet the constraints $(Eq.1-4)$.
+ %A maximal subgraph $H$ rooted at $v$ and its corresponding mesh component that meet the constraints $(Eq.1-4)$.
+ A subgraph $H$ rooted at $v$ that meets constraint (1).
 \STATE starting from $v$, initialize F($\hat{e_i}$, $\hat{e_j}$); $H = \emptyset $;
-\WHILE  {the current arc $e_k$ of $S$ picked by the BFS process is not empty}
+\WHILE  {the current arc $e_k$ of $S$ picked by the BFS process is nonempty}
   \IF  {$A(\overrightarrow{oc_{i,j}},  \hat{e_k}) \leq A(\overrightarrow{oc_{i,j}},  \hat{e_i})$}
-  \STATE  $H = H \cup {e_k}$;
+  \STATE  $H = H \cup \{e_k\}$;
   \ELSIF {$A(\overrightarrow{oq},  \hat{e_k}) \leq  2\theta$}
   \STATE $q = O( \hat{e_k}, c_{i,j}) \cap B_{i,j}$;
 %  \IF  {$A(\overrightarrow{oq},  \hat{e_k}) \leq \pi- 2\theta$}
   \STATE  $\hat{e_i}=  \hat{e_k}$;
   \STATE $\hat{e_j} =  \overrightarrow{oq}$;
   \STATE  update $B_{i,j}$ and $c_{i,j}$;
-  \STATE  $H = H \cup {e_k}$;
+  \STATE  $H = H \cup \{e_k\}$;
   \ENDIF
 \ENDWHILE
-\STATE  call the cutting scheme for $M$;
+%\STATE  call the cutting scheme for $M$;
 %\STATE  $M= M/M_H$;
 \label{code:fram:select} \\
-\RETURN  $H$ and $M_H$;
+%\RETURN  $H$ and $M_H$;
+\RETURN  $H$;
 \end{algorithmic}
 \end{algorithm}
 
@@ -133,7 +135,7 @@ Refer to Figure \ref{fig:fillets}, at the position of node $v$, we want to find 
            2D illustration of R(v) and the cuts, all vertices in R(v) are shown in green, and the cuts associated with a vertex are shown in dashed lines:(a) the case of cuts around concave points; (b) the case of cuts on a cylindrical part.}
 \end{figure}
 
-In either case, a cut that nicely follows the geometry features is demanded in order to preserve aesthetic appearance in the final assembled object. However, the positions of the skeleton nodes may not locally reflect the geometric features such as concave areas on the mesh surface, therefore they are insufficient for a nice partition of the mesh. To compensate this, we exploit the concave vertices of the mesh that are incident to the skeleton nodes and take those that significantly concave into a candidate set of pivots for the cuts. More precisely, let $R(v)$ be the set of concave vertices on $M$ that are incident to $v$ during the Laplacian shrinking process \cite{AuTCCL08}, we truncate $R(v)$ such that the insignificant concave vertices are removed away. Here, given a vertex $v_i$ and any of its neighbor $v_j$, $v_i$ is concave if $(v_i - v_j)(n_j - n_i)$ is nonnegative, the significance of a concave vertex can be quantified as the magnitude of $(v_i - v_j)(n_j - n_i)$ \cite{au2012mesh}, denoted as $\tau_i$. We collect vertices whose $\tau_i$ is greater than a threshold $\delta$.  
+In either case, a cut that nicely follows the geometry features is demanded in order to preserve aesthetic appearance in the final assembled object. However, the positions of the skeleton nodes may not locally reflect the geometric features such as concave areas on the mesh surface, therefore they are insufficient for a nice partition of the mesh. To compensate this, we exploit the concave vertices of the mesh that are incident to the skeleton nodes and take those that significantly concave into a candidate set of pivots for the cuts. More precisely, let $R(v)$ be the set of concave vertices on $M$ that are incident to $v$ during the Laplacian shrinking process \cite{AuTCCL08}, we truncate $R(v)$ such that the insignificant concave vertices are removed away. Here, given a vertex $v_i$ and any of its neighbor $v_j$, $v_i$ is concave if $(v_i - v_j)(n_j - n_i)$ is nonnegative, the significance of a concave vertex can be quantified as the magnitude of $(v_i - v_j)(n_j - n_i)$ \cite{au2012mesh}, denoted as $\tau_i$. We collect vertices whose $\tau_i$ is greater than a threshold $\delta$.
 
 %See Figure \ref{fig:fillets}(c-d), for each vertex in $R(v)$, we shall process a pair of fillets as done for vertex $p$ above.
 
