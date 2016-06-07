@@ -35,7 +35,7 @@ The decomposition of $S$ into a set of the least pieces of subgraphs $T$ that sa
 \STATE  $G=S$; $U= \emptyset$;
 \WHILE {$G\neq \emptyset$}
 \FOR{$i=1$; $i<| S |$; $i++$ }
-\STATE $H = Trim\_BFS\_P(v_i, G, \theta)$;
+\STATE $H = Trim\_BFS(v_i, G, \theta)$;
 \STATE $H = S / H$;
 \STATE $U = U \cup H$;
 \IF {$| U | < min$}
@@ -47,7 +47,7 @@ The decomposition of $S$ into a set of the least pieces of subgraphs $T$ that sa
 \STATE $count =count + 1$;
 \ENDWHILE
 \label{code:fram:select} \\
-\STATE call function $Mesh\_Decomposition(M, T)$; 
+\STATE call function $Mesh\_Decomposition(M, T)$;
 \end{algorithmic}
 \end{algorithm}
 
@@ -99,7 +99,10 @@ A node $v$ of Laplacian skeleton $S$, an angular value $\theta$.
 \end{algorithmic}
 \end{algorithm}
 
-Algorithm \ref{alg:trim} demonstrates the growing process. As the order of the chosen arcs influences the shape of the final BFS subgraph, in line $2$, the BFS process randomly chooses an arc incident to $v$ to proceed on. In order to guarantee a greater chance of converging to the optimal result in a short time, we apply a training-and-learning procedure for the first $P$ (say $1000$) runs. Formally, let $N_v$ be the number of times an arc is chosen as the exit arc when node $v$ is visited. Given the data of the first $P$ runs, as a node $v$ is visited, the probability of choosing an arc $e$ as an outgoing arc in the subsequent runs is, $P(v, e) = N_v/P$. To further speed up the process of $Trim\_BFS$, we assign a mark that stores the minimum number of subgraphs obtained so far, such that the current branching can be terminated if its output number of subgraphs is larger than the mark. Further, as $Trim\_BFS$ is greedy, the growth is towards a local maximal subgraph that satisfies the angle constraints, the resulting partition of Algorithm \ref{alg:Framwork} might not be a global optimum. In order to ensure more possibilities to find a global optimum, we employ a probability-based exploring scheme. In particular, we set the probability of terminating the growing of a subgraph as $k/K$, where $k$ is the size of the current subgraph and $K$ is the size of $S$. This gives high probability for $Trim\_BFS$ to grow in larger sizes while rising the probability of exploring subgraphs of smaller sizes. We denote $Trim\_BFS\_P$ as the probability based probing. We implemented it using rejection sampling.
+Algorithm \ref{alg:trim} demonstrates the growing process. As the order of the chosen arcs influences the shape of the final BFS subgraph, in line $2$, the BFS process randomly chooses an arc incident to $v$ to proceed on. 
+
+In order to guarantee a greater chance of converging to the optimal result in a short time, we refine Algorithm \ref{alg:trim} by inducing probabilities of choosing each arc of $S$. We denote this improved version of Algorithm \ref{alg:trim} as \textbf{$Tirm\_BFS\_P$.} The main idea of $Tirm\_BFS\_P$ is as follows.
+We apply a training-and-learning procedure for the first $P$ (say $1000$) runs. Formally, let $N_v$ be the number of times an arc is chosen as the exit arc when node $v$ is visited. Given the data of the first $P$ runs, as a node $v$ is visited, the probability of choosing an arc $e$ as an outgoing arc in the subsequent runs is, $P(v, e) = N_v/P$. To further speed up the process of $Trim\_BFS$, we assign a mark that stores the minimum number of subgraphs obtained so far, such that the current branching can be terminated if its output number of subgraphs is larger than the mark. Further, as $Trim\_BFS$ is greedy, the growth is towards a local maximal subgraph that satisfies the angle constraints, the resulting partition of Algorithm \ref{alg:Framwork} might not be a global optimum. In order to ensure more possibilities to find a global optimum, we employ a probability-based exploring scheme. In particular, we set the probability of terminating the growing of a subgraph as $k/K$, where $k$ is the size of the current subgraph and $K$ is the size of $S$. This gives high probability for $Trim\_BFS$ to grow in larger sizes while rising the probability of exploring subgraphs of smaller sizes. We implemented it using rejection sampling.
 
 %Since the traversing process assigns a specific direction to each arc that was originally undirected in $S$, it is not obvious whether the angle constraint is satisfied, To clarify this, we provide the following lemma.
 
@@ -129,7 +132,7 @@ Algorithm \ref{alg:trim} demonstrates the growing process. As the order of the c
 \end{figure}
 
 
-\textbf{Mesh Partition.} The skeleton partition tells us a rough sketch of the mesh partition, i.e., the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. Yet we need to determine the exact positions and orientations of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting scheme for $Mesh\_Decomposition(M, T)$. For brevity, the pseudocode is omitted here.
+\textbf{Mesh Partition.} The skeleton partition tells us a rough sketch of the mesh partition, i.e., the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. Yet we need to determine the exact positions and orientations of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting scheme for \textbf{$Mesh\_Decomposition(M, T)$.} For brevity, the pseudocode is omitted here.
 
 
 Refer to Figure \ref{fig:fillets}, at the position of node $v$, we want to find a surface vertex $q \in M$ around $v$ which the cutting plane should pass through, yet the cutting length is minimized. Let us denote the set of all planes which pass through a surface vertex $p$ and are orthogonal to vectors in $cone(H_i)$ (originated from $p$)  as $F(H_i)$, which we term as a \emph{fillet}. Then if the node $v$ is incident to two subgraphs $H_i$ and $H_j$, we have two plane sets $F(H_i)$ and $F(H_j)$ at point $p$, respectively. Depending on the relative position of $p$, we have the following two cases. \emph{case (i)}: $F(H_i) \cap F(H_j) \neq \emptyset$. In this case, we shall randomly sample a set of cutting planes from $F(H_i) \cap F(H_j)$, and determine the one achieving the minimum cutting length; \emph{case (ii):} $F(H_i) \cap F(H_j) = \emptyset$. In this case, two cuts are required in order to separate the mesh into support-free subparts. However, care must be taken as the angle between $c_1$ and $c_2$ should be constrained by $A(n(c_1), n(c_2)) \leq \pi/2+ \theta$. If this constraint is violated, one more cut in between $c_1$ and $c_2$ is required; while the base of each partitioned component should be no less than $\tau$. If any of the constraint is not satisfied, we shall translate the fillets along the printing direction in an opposite sense until the constraints are satisfied.
