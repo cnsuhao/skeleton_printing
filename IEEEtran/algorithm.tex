@@ -20,7 +20,7 @@ We have the following optimization system:
 \end{equation*}
 where all $H_i$-s constitute a partition of the original graph to be cut off. A direct exploration of all possible partitions over the graph $G$ could quickly leads to exponential complexity. The key here is to quickly explore potential good partitions in a way that subsequent exploration of the graph is limited to those which leads to a less value of the optimization function. Hence, we employ a randomized Monte Carlo algorithm.
 
-The idea is to separate the minimization of the two target terms (number of subgraphs and the total cutting length) sequentially rather than simultaneously. To minimize the number of subgraphs, we use a randomized exploration strategy, but give a higher probability to explore the graph deeply. In particular, assume that we are given a function $Tirm\_BFS(v, G, \theta)$ which traverses $G$ from $v$ in a breath first search manner to progressively collect arcs which satisfy the constraints. The following algorithm sketches the idea of the skeleton decomposition algorithm. The main idea is to randomly search for candidate subgraphs using Monte Carlo Method, which randomly chooses a node of $G$ to start traversing and randomly grows the subgraph while paying attention to the constraints.
+The idea is to separate the minimization of the two target terms (number of subgraphs and the total cutting length) sequentially rather than simultaneously. To minimize the number of subgraphs, we use a randomized exploration strategy, but give a higher probability to explore the graph deeply. In particular, assume that we are given a function $Tirm\_BFS(v, G, \theta)$ which traverses $G$ from $v$ in a breath first search manner to progressively collect arcs which satisfy the constraints; and another function $Mesh\_Decomposition(M, T)$ which partitions $M$ based on the information of $T$. The following algorithm sketches the idea of the skeleton decomposition algorithm. The main idea is to randomly search for candidate subgraphs using Monte Carlo Method, which randomly chooses a node of $G$ to start traversing and randomly grows the subgraph while paying attention to the constraints.
 
 \begin{algorithm}
 \caption{$SkeletonMeshDecomposition(S, M)$}
@@ -29,7 +29,7 @@ The idea is to separate the minimization of the two target terms (number of subg
 \REQUIRE~
 The Laplacian skeleton $S$ of a mesh model $M$;
 \ENSURE~
-The decomposition of $S$ into a set of the least pieces of subgraphs $T$ that satisfies constraint (1);
+The decomposition of $S$ into a set of the least pieces of subgraphs $T$ that satisfies constraint (1); a partition of $M$ based on $T$ that satisfies constraint (2-4).
 \STATE $T = \emptyset$; $min = \inf$; $count$ = 0; $max\_iter$ = a user defined large constant;
 \WHILE {$count < max\_iter$}
 \STATE  $G=S$; $U= \emptyset$;
@@ -47,15 +47,21 @@ The decomposition of $S$ into a set of the least pieces of subgraphs $T$ that sa
 \STATE $count =count + 1$;
 \ENDWHILE
 \label{code:fram:select} \\
-\RETURN $T$;
+\STATE call function $Mesh\_Decomposition(M, T)$; 
 \end{algorithmic}
 \end{algorithm}
+
+
+
+
+
+
 
 \begin{figure}[tbp]
   \centering
   \includegraphics[width=\linewidth]{figs/take_arc.png}
   \caption{\label{fig:sphere}%
-           Illustration of unit vectors, unit sphere, spherical disks, and the determination of taking a new edge in $TrimBFS$.}
+           Illustration of unit vectors, unit sphere, spherical disks, and the determination of taking a new edge in $Trim\_BFS$.}
 \end{figure}
 
 Next we shall show how $Tirm\_BFS(v, G, \theta)$ works to find a locally maximal subgraph starting at $v$ that satisfies the angle constraint. Let $H$ be the current subgraph obtained so far. When an arc $e$ of $G$ is visited, we need to determine whether it should be included into $H$. If the start of each outgoing arc of $H$ is moved to a common origin, then the arcs form a fork of rays (Figure \ref{fig:sphere}). A naive method to judge whether $e$ should be included is to move the start of $e$ to the origin of the fork, and compute the angle between $e$ and each arc of the fork, $e$ is included if the maximum angle between $e$ and each arc of the fork does not exceed 2$\theta$. However, this would lead to $O(K^{2})$ time complexity, where $K$ is the size of $S$. To speed up this process, we keep the pair of vectors which form the largest angle and judge whether a new vector expands the angle of the fork. See Figure \ref{fig:sphere}, let $\hat{e_i}$  and $\hat{e_j}$ be the units of these two vectors obtained so far. For simplicity, we denoted by $F( \hat{e_i}, \hat{e_j} )$ the fork with the starts of all unit vectors converging at the origin of the coordinate frame, where $\hat{e_i}$  and  $\hat{e_j}$  are the pair of unit vectors that form the largest angle in the fork. Let $\hat{e_k}$  be the unit of a new vector to be processed next, if $\hat{e_k}$ penetrates through the blue circle, then no change need to be made to the fork; otherwise, let $D_{i,j}$ denote the spherical disk that passes through the endpoints of $\hat{e_i}$  and $\hat{e_j}$ whose central axis is collinear with $\hat{e_i}$  + $\hat{e_j}$, let $c_{i,j}$ be the center of $D_{i,j}$, let $B_{i,j}$ be the boundary circle of $D_{i,j}$. The circle passing through $\hat{e_k}$  and $c_{i,j}$, denoted as $O( \hat{e_k}, c_{i,j})$, intersects  $B_{i,j}$ at two points, let $q$ the point further away from the endpoint of $\hat{e_k}$, then $\overrightarrow{oq}$ and $\hat{e_k}$ are the two extreme vectors that to be used in the next iteration. To summarize, a new arc $e_k$ is taken by Function $Tirm\_BFS$ if and only if one of the following two conditions is met:
@@ -123,7 +129,7 @@ Algorithm \ref{alg:trim} demonstrates the growing process. As the order of the c
 \end{figure}
 
 
-\textbf{Mesh Partition.} The skeleton partition tells us a rough sketch of the mesh partition, i.e., the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. Yet we need to determine the exact positions and orientations of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting principle.
+\textbf{Mesh Partition.} The skeleton partition tells us a rough sketch of the mesh partition, i.e., the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. Yet we need to determine the exact positions and orientations of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting scheme for $Mesh\_Decomposition(M, T)$. For brevity, the pseudocode is omitted here.
 
 
 Refer to Figure \ref{fig:fillets}, at the position of node $v$, we want to find a surface vertex $q \in M$ around $v$ which the cutting plane should pass through, yet the cutting length is minimized. Let us denote the set of all planes which pass through a surface vertex $p$ and are orthogonal to vectors in $cone(H_i)$ (originated from $p$)  as $F(H_i)$, which we term as a \emph{fillet}. Then if the node $v$ is incident to two subgraphs $H_i$ and $H_j$, we have two plane sets $F(H_i)$ and $F(H_j)$ at point $p$, respectively. Depending on the relative position of $p$, we have the following two cases. \emph{case (i)}: $F(H_i) \cap F(H_j) \neq \emptyset$. In this case, we shall randomly sample a set of cutting planes from $F(H_i) \cap F(H_j)$, and determine the one achieving the minimum cutting length; \emph{case (ii):} $F(H_i) \cap F(H_j) = \emptyset$. In this case, two cuts are required in order to separate the mesh into support-free subparts. However, care must be taken as the angle between $c_1$ and $c_2$ should be constrained by $A(n(c_1), n(c_2)) \leq \pi/2+ \theta$. If this constraint is violated, one more cut in between $c_1$ and $c_2$ is required; while the base of each partitioned component should be no less than $\tau$. If any of the constraint is not satisfied, we shall translate the fillets along the printing direction in an opposite sense until the constraints are satisfied.
