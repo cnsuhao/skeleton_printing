@@ -53,7 +53,7 @@ Experimental Validation: We validated our approach by a set of printing experime
 
 \end{table*}
 
-The programming, running time, etc.
+The improved algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. The running time of processing the models are summarized in Table \ref{tab:ertms:time}.
 
 \begin{table*}[htb]
 
@@ -67,7 +67,7 @@ The programming, running time, etc.
 
      Models& Tree& Armadillo& Octopus& Deer& Airplane& Knots &Sculpture & Gargoyle\\ \hline
      number of vertices& 1343& 2904& 5979& 8917& 11443& 15485 &25002 & 34594\\ \hline
-     running time(s) & 97.1395& 92.4798&74.2186 &90.618 &197.1732 &88.744 &199.893 &311.559 \\ \hline 
+     running time(s) & 97.1395& 92.4798&74.2186 &90.618 &197.1732 &88.744 &199.893 &311.559 \\ \hline
 
   \hline
 
@@ -77,7 +77,7 @@ The programming, running time, etc.
 
 \end{footnotesize}
 
-\caption{The running time of processing the models.}\label{tab:ertms:summary}
+\caption{The running time of processing the models.}\label{tab:ertms:time}
 
 \end{table*}
 
@@ -96,7 +96,7 @@ The programming, running time, etc.
 
 \hl {[Evaluations: how close we are to the global optimum][Limitations: discussion about 1. the strength of our interior, -- future work. 2. cut through salient regions -- hard to balance. etc]}
 
-Since the problem of partitioning the skeleton graph into the least number of support-free subgraphs is NP-hard, it is impossible to obtain an optimal result in polynomial time. Particularly, the sequence of which arcs to be taken into a subgraph would affect the final partition result. Further, our current approach of partitioning tries to find a node as a root of a subgraph, while in general it is possible that the subgraph is unrooted. For example, in Figure \ref{fig:unrooted}, under the angle constraint of $\theta = 70{\circ}$, the tree skeleton can be taken as a whole printable graph while our algorithm would take node $v$ as a root for the upper and lower parts of the tree respectively. Future research can be elaborated along this line.
+Since the problem of partitioning the skeleton graph into the least number of support-free subgraphs is NP-hard, it is impossible to obtain an optimal result in polynomial time. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the final partition result. Further, our current approach of partitioning tries to find a node as a root of a subgraph, while in general it is possible that the subgraph is unrooted. For example, in Figure \ref{fig:unrooted}, under the angle constraint of $\theta = 70{\circ}$, the tree skeleton can be taken as a whole printable graph while our algorithm would take node $v$ as a root for the upper and lower parts of the tree respectively. Future research can be elaborated along this line.
 
 \begin{figure}[tbp]
   \centering
