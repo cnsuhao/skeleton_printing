@@ -6,10 +6,9 @@ Partition Examples: Without any partitioning operation, the inner and outer boun
   \centering
   \includegraphics[width=\linewidth]{figs/dear-simulation.png}
   \caption{\label{fig:dear-simulation}%
-           An illustration of the sculpture model under the 3D printing software Z-suite as $\theta = 20^{\circ}$; (a) the full model; (b) an intermediate step of the simulation; (c) the simulation result of our partitioned shell models; (d) the 3D printed shell parts free of support.}
+           An illustration of the sculpture model under the 3D printing software Z-suite as $\theta = 20^{\circ}$; (a) the full model; (b) an intermediate step of the simulation; (c) the simulation result of our partitioned shell models; (d) the 3D printed shell parts free of support. \youyi{Here should show consistent examples!} }
 \end{figure}
 
-We have run our algorithm on various natural or man-made models, and some of the results are presented as follows:
 
 \begin{figure}[tbp]
   \centering
@@ -17,8 +16,7 @@ We have run our algorithm on various natural or man-made models, and some of the
   \caption{\label{fig:programming}%
            Partition examples as $\theta = 70^{\circ}$. The printing direction of each part is orthogonal to its base (shown in the same color as the part)}
 \end{figure}
-
-Experimental Validation: We validated our approach by a set of printing experiments on Zortrax desktop printer, a kind of FDM machine that allows a printing layer thickness of 0.09mm , this is also the layer thickness we used in the printing experiments. The experiments are based on the choice of $\theta = 70^{\circ}$, i.e., all overhangs with an angle of no larger than $20^{\circ}$ with respect to the build platform are given support structures. Zortrax provides a built-in 3D printing software called \emph{Z-suite} can automatically counts the filament of the print material (in meters) and an estimate of the weight of the print material. The following table summarizes the printing material and time costs by the original models and the partitioned models. Our approach significantly reduces both the printing material and time as the skeleton-based partition reduces both the supported materials inside and outside the models.
+We have run our algorithm on various natural or man-made models, and some of the results are presented in Figure \ref{fig:experiment}. We validated our approach by a set of printing experiments on Zortrax desktop printer, a kind of FDM machine that allows a printing layer thickness of 0.09mm , this is also the layer thickness we used in the printing experiments. The experiments are based on the choice of $\theta = 70^{\circ}$, i.e., all overhangs with an angle of no larger than $20^{\circ}$ with respect to the build platform are given support structures. Zortrax provides a built-in 3D printing software called \emph{Z-suite} can automatically counts the filament of the print material (in meters) and an estimate of the weight of the print material. Table \ref{tab:ertms:summary} summarizes the printing material and time costs by the original models and the partitioned models. Our approach significantly reduces both the printing material and time as the skeleton-based partition reduces both the supported materials inside and outside the models.
 
 
 \begin{table*}[htb]
@@ -53,7 +51,6 @@ Experimental Validation: We validated our approach by a set of printing experime
 
 \end{table*}
 
-The improved algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. The running time of processing the models are summarized in Table \ref{tab:ertms:time}.
 
 \begin{table*}[htb]
 
@@ -91,10 +88,9 @@ The improved algorithm was implemented with C++ on a PC with Intel i7-4790 and 8
            A comparison between printing of original shell models and our partitioned models.}
 \end{figure}
 
+The algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. The running time of processing the models are summarized in Table \ref{tab:ertms:time}. Figure \ref{fig:experiment} shows the comparison of the printing effects of the original models and our partitioned models. Due to the limit of the current technology, any FDM printer requires a small amount of supporting bed for holding the printed model on the printing platform, other printing techniques such as SLA, SLM and SLS may avoid the use of these supporting beds. Therefore, our approach guarantees support-free to the most extent for all exiting printing techniques.
 
- Figure \ref{fig:experiment} shows the comparison of the printing effects of the original models and our partitioned models. Due to the limit of the current technology, any FDM printer requires a small amount of supporting bed for holding the printed model on the printing platform, other printing techniques such as SLA, SLM and SLS may avoid the use of these supporting beds. Therefore, our approach guarantees support-free to the most extent for all exiting printing techniques.
-
-\hl {[Evaluations: how close we are to the global optimum][Limitations: discussion about 1. the strength of our interior, -- future work. 2. cut through salient regions -- hard to balance. etc]}
+\hl {[Evaluations: how close we are to the global optimum][Limitations: discussion about 1. the strength of our interior, -- future work. 2. cut through salient regions -- hard to balance. etc]} \youyi{We need some efforts in the paragraph below.}
 
 Since the problem of partitioning the skeleton graph into the least number of support-free subgraphs is NP-hard, it is impossible to obtain an optimal result in polynomial time. However, from Table \ref{tab:ertms:summary}, we can conclude that the partition result for the skeletons are small enough. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the final partition result. Further, our current approach of partitioning tries to find a node as a root of a subgraph, while in general it is possible that the subgraph is unrooted. For example, in Figure \ref{fig:unrooted}, under the angle constraint of $\theta = 70{\circ}$, the tree skeleton can be taken as a whole printable graph while our algorithm would take node $v$ as a root for the upper and lower parts of the tree respectively. Future research can be elaborated along this line. But how the general unrooted subgraphs are taken efficiently other than  searching in an exhaustive combinatorial manner to form a minimum set of subgraphs is unknown.
 
