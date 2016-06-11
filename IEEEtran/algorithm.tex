@@ -1,9 +1,13 @@
 \section{Algorithm}
-%\textbf{Skeleton Partition.} 
+%\textbf{Skeleton Partition.}
 Let $M$ denote the mesh model, and let S denote the Laplacian skeleton obtained via the algorithm provided in \cite{AuTCCL08}. We propose an algorithm for partitioning $S$ into a minimum set of \emph{disjoint} subgraphs, each of which can be fabricated in a 3D printer without using support structures. Decomposing $S$ into two pieces can be done by duplicating a node $v$; and partitioning $M$ at node $v$ requires the determination of the position and normal of a cutting plane. To guarantee an aesthetical look on the resulting surface with shortest seams, we need a constraint to minimize the peripheral length of the cut in terms of the position and normal of the cutting plane. Note that the orientation of the cutting plane affects the printing direction and thus the shape of the subgraph while on the contrary, the shape of the subgraph limits the orientation of the cutting plane. Hence, this is an essential \emph{chicken-and-egg} problem. In addition, we also need to consider the printing volume constraint, i.e., the volume of the printing model should be within the working volume of a given 3{D} printer.
 
 To summarize, our objectives are the minimization of: (1) the number of partitioned components $N$; (2) the total peripheral length of each cut $L_i$, i.e., $\Sigma L_i$. The constraints of the problem are as follows:
+
+
 (i) Each arc of the partitioned subgraph $H_i$ subtends to an axis by an angle of no larger than $\theta$, where $\theta$ is a printer-dependent parameter obtained from experiments. This guarantees that the corresponding mesh component is support-free during the printing process;
+
+
 (ii) As the directed arcs of $H_i$ are translated to a common origin, they form a fork. Refer to Figure \ref{fig:cone} Let $a$ and $b$ be the pair of farthest vectors in the fork, i.e., the angle between $a$ and $b$, denoted as $\alpha$, is the largest. Let the central ray of the minimum cone that encloses the fork be denoted as $r(H_i)$, then $r(H_i)$ is collinear with $a + b$. Then the feasible directions of printing $H_i$ without using any support is bounded by a solid cone centered at $r(H_i)$ with an apex angle of $2\theta - \alpha$.
 Therefore, let $b(H_i)$ be the base of the mesh part that corresponds to the root of $H_i$, then $b(H_i)$ is orthogonal to some vector $\hat{e}$ in $cone(H_i)$. This guarantees that the base is placed on the 3D printing platform.
 
@@ -18,13 +22,12 @@ Thereafter, in order to guarantee support-free fabrication of any cut other than
 
 %As a cut partitions a shell model, one facet is generated for the CAD model, but it two facets are generated physically, . Let the normal direction of the cut $c$ (pointing to the exterior of the partitioned part) be denoted as $n(c)$.
 
-%Mathematically, a cut behaves as a single facet for the mesh; but it results in two facets on the appearance of the physical model. With the physical understanding, for each cut c, let $c_1$ and $c_2$ be the two facets on the physical model. Since $M$ is a shell mode, $c_1$ and $c_2$ are two annular-shaped plane facets. Let $n(c_1)$ be the normal direction of $c_1$ that points into the interior of the shell. $n(c_1)$ is defined similarly. 
-
-
-
+%Mathematically, a cut behaves as a single facet for the mesh; but it results in two facets on the appearance of the physical model. With the physical understanding, for each cut c, let $c_1$ and $c_2$ be the two facets on the physical model. Since $M$ is a shell mode, $c_1$ and $c_2$ are two annular-shaped plane facets. Let $n(c_1)$ be the normal direction of $c_1$ that points into the interior of the shell. $n(c_1)$ is defined similarly.
 
 
 (iii) The base of a printing model should be large enough to gather sticky force from the building platform, such that the model is not deformed during the building process. Formally, let $area(b(H_i))$ denote the area of the base of the mesh component corresponding to $H_i$, which is approximately equal to the peripheral length of the base times the thickness of the shell. let $\tau$ be a user-defined threshold value, then we have $b(H_i) \geq \tau$. Here $\tau$ can be determined empirically; Finally,
+
+
 (iv) Each cut partitions a single subgraph.
 
 We have the following optimization system:
@@ -43,8 +46,8 @@ where all $H_i$-s constitute a partition of the original graph. A direct explora
 
 The idea is to separate the minimization of the two target terms (number of subgraphs and the total cutting length) sequentially rather than simultaneously. In the following, we shall discuss how the skeleton and mesh are partitioned in details.
 
-\textbf{Skeleton Partition.} 
- 
+\textbf{Skeleton Partition.}
+
  To minimize the number of subgraphs, we use a randomized exploration strategy, but give a higher probability to explore the graph deeply. In particular, assume that we are given a function $Trim\_BFS(v, G, \theta)$ which traverses $G$ from $v$ in a breath first search manner to progressively collect arcs which satisfy Constraint (1). The following algorithm sketches the idea of the skeleton decomposition algorithm. The main idea is to randomly search for candidate subgraphs using Monte Carlo Method, which randomly chooses a node of $G$ to start traversing and randomly grows the subgraph while paying attention to the constraints.
 
 \begin{algorithm}
