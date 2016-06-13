@@ -92,14 +92,27 @@ The algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. 
 
 \hl {[Evaluations: how close we are to the global optimum][Limitations: discussion about 1. the strength of our interior, -- future work. 2. cut through salient regions -- hard to balance. etc]} \youyi{We need some efforts in the paragraph below.}
 
-Since the problem of partitioning the skeleton graph into the least number of support-free subgraphs is NP-hard, it is impossible to obtain an optimal result in polynomial time. However, from Table \ref{tab:ertms:summary}, we can conclude that the partition result for the skeletons are small enough. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the final partition result. Further, our current approach of partitioning tries to find a node as a root of a subgraph, while in general it is possible that the subgraph is unrooted. For example, in Figure \ref{fig:unrooted}, under the angle constraint of $\theta = 70{\circ}$, the tree skeleton can be taken as a whole printable graph while our algorithm would take node $v$ as a root for the upper and lower parts of the tree respectively. Future research can be elaborated along this line. But how the general unrooted subgraphs are taken efficiently other than  searching in an exhaustive combinatorial manner to form a minimum set of subgraphs is unknown.
+Since the problem of partitioning the skeleton graph into the least number of support-free subgraphs is NP-hard, it is impossible to obtain an optimal result in polynomial time. However, from Table \ref{tab:ertms:summary}, we can conclude that the partition result for the skeletons are small enough. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the final partition result. From the programming result in Figure \ref{fig:programming}, it is very hard to identify how are away our partition result is from the optimal result (i.e., the least pieces of sub-skeletons), since an optimal partition result would require an enumeration of outrageously huge amount of combinations. However, we can evaluate our skeleton partition result by examining some simple skeleton examples with obvious optimal partition numbers.
+
+Refer to Figure \ref{fig:cube}, the skeleton cannot be printed as a whole in a support-free manner due to the cross on the top facet. Our algorithm partitions the skeleton into two parts (shown in red and green respectively), and is therefore optimal. Note that the bars are hollow in the mesh model, therefore any support-free solid model based partition method (e.g., the one provided by \cite{Hu_siga14}) cannot be applied, and our skeleton-based partition method is preferable.
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=0.2\textwidth]{figs/unrooted.png}
-  \caption{\label{fig:unrooted}%
-           An illustration of a tree skeleton that satisfies the angle constraint but is taken as two subgraphs by our algorithm.}
+  \includegraphics[width=0.4\textwidth]{figs/cube.png}
+  \caption{\label{fig:cube}%
+           An illustration of a shell model whose skeleton is partitioned into the least pieces by our algorithm.}
 \end{figure}
+
+
+
+%Further, our current approach of partitioning tries to find a node as a root of a subgraph, while in general it is possible that the subgraph is unrooted. For example, in Figure \ref{fig:unrooted}, under the angle constraint of $\theta = 70{\circ}$, the tree skeleton can be taken as a whole printable graph while our algorithm would take node $v$ as a root for the upper and lower parts of the tree respectively. Future research can be elaborated along this line. But how the general unrooted subgraphs are taken efficiently other than  searching in an exhaustive combinatorial manner to form a minimum set of subgraphs is unknown.
+
+%\begin{figure}[tbp]
+%  \centering
+%  \includegraphics[width=0.2\textwidth]{figs/unrooted.png}
+%  \caption{\label{fig:unrooted}%
+%           An illustration of a tree skeleton that satisfies the angle constraint but is taken as two subgraphs by our algorithm.}
+%\end{figure}
 
 %However, we can evaluate the effectiveness of our approach by judging the topology of some simple models and evaluate how close our partition is from a potential optimal result. For example, from Figure \ref{fig:ex1}, under the requirement of $\theta = 70^{\circ}$, ignoring the tinny detailed geometric features we can observe that an optimal partition of the deer model requires at least $4$ cuts: the tail, the chunk including the legs, the neck, and the head and the horn. Our approach provides a partition of 4 cuts, which is almost near the optimal. Further, from the appearance of the gargoyle model (the last row of Figure \ref{fig:experiment}), we can see that an optimal cutting should have the following 4 parts: the head, two wings, and the remaining parts. Our partition results in 5 parts, which is very close to the potential optimal partition.
 
