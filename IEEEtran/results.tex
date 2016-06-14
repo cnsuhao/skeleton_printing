@@ -92,7 +92,7 @@ The algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. 
 
 \hl {[Evaluations: how close we are to the global optimum][Limitations: discussion about 1. the strength of our interior, -- future work. 2. cut through salient regions -- hard to balance. etc]} \youyi{We need some efforts in the paragraph below.}
 
-Since the problem of partitioning the skeleton graph into the least number of support-free subgraphs is NP-hard, it is impossible to obtain an optimal result in polynomial time. However, from Table \ref{tab:ertms:summary}, we can conclude that the partition result for the skeletons are small enough. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the final partition result. From the programming result in Figure \ref{fig:programming}, it is very hard to identify how are away our partition result is from the optimal result (i.e., the least pieces of sub-skeletons), since an optimal partition result would require an enumeration of outrageously huge amount of combinations. However, we can evaluate our skeleton partition result by examining some simple skeleton examples with obvious optimal partition numbers.
+Since the problem of partitioning the skeleton graph into the least number of support-free subgraphs is NP-hard, it is impossible to obtain an optimal result in polynomial time. However, from Table \ref{tab:ertms:summary}, we can conclude that the partition result for the skeletons are small enough. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the final partition result. From the programming result in Figure \ref{fig:programming}, it is very hard to identify how far away our partition result is from the optimal result (i.e., the least pieces of sub-skeletons), since an optimal partition result would require an enumeration of outrageously huge amount of combinations. However, as showni n the table, the number of partitioned parts are small enough. Further, we can evaluate our skeleton partition result by examining some simple skeleton examples with obvious optimal partition numbers.
 
 Refer to Figure \ref{fig:cube}, the skeleton cannot be printed as a whole in a support-free manner due to the cross on the top facet. Our algorithm partitions the skeleton into two parts (shown in red and green respectively), and is therefore optimal. Note that the bars are hollow in the mesh model, therefore any support-free solid model based partition method (e.g., the one provided by \cite{Hu_siga14}) cannot be applied, and our skeleton-based partition method is preferable.
 
@@ -100,7 +100,7 @@ Refer to Figure \ref{fig:cube}, the skeleton cannot be printed as a whole in a s
   \centering
   \includegraphics[width=0.4\textwidth]{figs/cube.png}
   \caption{\label{fig:cube}%
-           An illustration of a shell model whose skeleton is partitioned into the least pieces by our algorithm.}
+           An illustration of a shell model (a) and its skeleton is partitioned into the least pieces by our algorithm (b). The vectors in the the right figure indicate the printing directions.}
 \end{figure}
 
 
