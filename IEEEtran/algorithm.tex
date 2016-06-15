@@ -1,8 +1,8 @@
 \section{Algorithm}
 %\textbf{Skeleton Partition.}
-Let $M$ denote the mesh model, and let S denote the Laplacian skeleton obtained via the algorithm provided in \cite{AuTCCL08}. We propose an algorithm for partitioning $S$ into a minimum set of \emph{disjoint} subgraphs, each of which can be fabricated in a 3D printer without using support structures. Decomposing $S$ into two pieces can be done by duplicating a node $v$; and partitioning $M$ at node $v$ requires the determination of the position and normal of a cutting plane. To guarantee an aesthetical look on the resulting surface with shortest seams, we need a constraint to minimize the peripheral length of the cut in terms of the position and normal of the cutting plane. Note that the orientation of the cutting plane affects the printing direction and thus the shape of the subgraph while on the contrary, the shape of the subgraph limits the orientation of the cutting plane. Hence, this is an essential \emph{chicken-and-egg} problem. In addition, we also need to consider the printing volume constraint, i.e., the volume of the printing model should be within the working volume of a given 3{D} printer.
+Let $M$ denote the mesh model, and let S denote the Laplacian skeleton obtained via the algorithm provided in \cite{AuTCCL08}. We propose an algorithm for partitioning $M$ into a minimum set of \emph{disjoint} components, each of which can be fabricated in a 3D printer without using any support structure. Decomposing $S$ into two pieces can be done by duplicating a node $v$; while partitioning $M$ at node $v$ requires the determination of the position and normal of a cutting plane. To guarantee an aesthetical look on the resulting surface with shortest seams, we need a constraint to minimize the peripheral length of the cut in terms of the position and normal of the cutting plane. Note that the orientation of the cutting plane affects the printing direction and thus the shape of the subgraph while on the contrary, the shape of the subgraph limits the orientation of the cutting plane. Hence, this is an essential \emph{chicken-and-egg} problem. In addition, we also need to consider the printing volume constraint, i.e., the volume of the printing model should be within the working volume of a given 3{D} printer.
 
-To summarize, our objectives are the minimization of: (1) the number of partitioned components $N$; (2) the total peripheral length of each cut $L_i$, i.e., $\Sigma L_i$. The constraints of the problem are as follows:
+To summarize, our objectives are the minimization of: (1) the number of partitioned components $N$ of the mesh model; (2) the total peripheral length of each cut $L_i$, i.e., $\Sigma L_i$. The constraints of the problem are as follows:
 
 
 (i) Each arc of the partitioned subgraph $H_i$ subtends to an axis by an angle of no larger than $\theta$, where $\theta$ is a printer-dependent parameter obtained from experiments. This guarantees that the corresponding mesh component is support-free during the printing process;
@@ -44,18 +44,26 @@ We have the following optimization system:
 \end{equation*}
 where all $H_i$-s constitute a partition of the original graph. A direct exploration of all possible partitions over the graph $G$ could quickly leads to exponential complexity. The key here is to quickly find potential good partitions in a way that subsequent exploration of the graph is limited to those which leads to a less value of the optimization function. We employ a randomized Monte Carlo algorithm detailed below.
 
-The idea is to separate the minimization of the two target terms (number of subgraphs and the total cutting length) sequentially rather than simultaneously. In the following, we shall discuss how the skeleton and mesh are partitioned in details.
+The idea is to separate the minimization of the two target terms (number of mesh components and the total cutting length) sequentially rather than simultaneously. In the following, we shall discuss how the skeleton and mesh are partitioned in details.
 
-\textbf{Skeleton Partition.} To minimize the number of subgraphs, we use a randomized exploration strategy, but give a higher probability to explore the graph deeply. In particular, assume that we are given a function $Trim\_BFS(v, G, \theta)$ which traverses $G$ from $v$ in a breath first search manner to progressively collect arcs which satisfy Constraint (1). The following algorithm sketches the idea of the skeleton decomposition algorithm. The main idea is to randomly search for candidate subgraphs using Monte Carlo Method, which randomly chooses a node of $G$ to start traversing and randomly grows the subgraph while paying attention to the constraints.
+%\textbf{Skeleton Partition.} To minimize the number of subgraphs, 
+
+We use a randomized exploration strategy, but give a higher probability to explore the graph deeply. In particular, assume that we are given a function $Trim\_BFS(v, G, \theta)$ which traverses $G$ from $v$ in a breath first search manner to progressively collect arcs which satisfy Constraint (1); and a function $MeshDecomposition(U , M)$ that decomposes $M$ based on the set of partitioned subgraphs $U$, and returns a partition of $M$, denoted as $M^'$, and the number of cuts $N$ . The following algorithm sketches the idea of the skeleton decomposition algorithm. The main idea is to randomly search for candidate subgraphs using Monte Carlo Method, which randomly chooses a node of $G$ to start traversing and randomly grows the subgraph while paying attention to the constraints.
 
 \begin{algorithm}
 \caption{$SkeletonDecomposition(S, M)$}
 \label{alg:Framwork}
 \begin{algorithmic}[1]
 \REQUIRE~
-The Laplacian skeleton $S$ of a mesh model $M$;
+The Laplacian skeleton $S$ and mesh model $M$;
 \ENSURE~
-The decomposition of $S$ into a set of the least pieces of subgraphs $T$ that satisfies constraint (1).
+The decomposition of $M$ into the least pieces of components,  
+
+a set of subgraphs $T$ that satisfies constraint (1), and 
+
+
+
+
 %; a partition of $M$ based on $T$ that satisfies constraint (2-4)
 \STATE $T = \emptyset$; $min = \inf$; $count$ = 0; $max\_iter$ = a user defined large constant;
 \WHILE {$count < max\_iter$}
@@ -63,9 +71,10 @@ The decomposition of $S$ into a set of the least pieces of subgraphs $T$ that sa
 \WHILE {$G\neq \emptyset$}
 \FOR{$i=1$; $i<| S |$; $i++$ }
 \STATE $H = Trim\_BFS(v_i, G, \theta)$;
-\STATE $H = S / H$;
+\STATE $S = S / H$;
 \STATE $U = U \cup H$;
-\IF {$| U | < min$}
+\STATE $(M^', N) = MeshDecomposition(U , M)$;
+\IF {$N < min$}
 \STATE $T = U$;
 \STATE  $min = | U | $;
 \ENDIF
