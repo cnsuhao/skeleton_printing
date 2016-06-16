@@ -46,42 +46,38 @@ where all $H_i$-s constitute a partition of the original graph. A direct explora
 
 The idea is to separate the minimization of the two target terms (number of mesh components and the total cutting length) sequentially rather than simultaneously. In the following, we shall discuss how the skeleton and mesh are partitioned in details.
 
-%\textbf{Skeleton Partition.} To minimize the number of subgraphs, 
+%\textbf{Skeleton Partition.} To minimize the number of subgraphs,
 
-We use a randomized exploration strategy, but give a higher probability to explore the graph deeply. In particular, assume that we are given a function $Trim\_BFS(v, G, \theta)$ which traverses $G$ from $v$ in a breath first search manner to progressively collect arcs which satisfy Constraint (1); and a function $MeshDecomposition(U , M)$ that decomposes $M$ based on the set of partitioned subgraphs $U$, and returns a partition of $M$, denoted as $M^'$, and the number of cuts $N$ . The following algorithm sketches the idea of the skeleton decomposition algorithm. The main idea is to randomly search for candidate subgraphs using Monte Carlo Method, which randomly chooses a node of $G$ to start traversing and randomly grows the subgraph while paying attention to the constraints.
+We use a randomized exploration strategy, but give a higher probability to explore the graph deeply. In particular, assume that we are given a function $Trim\_BFS(v, G, \theta)$ which traverses $G$ from $v$ in a breath first search manner to progressively collect arcs which satisfy Constraint (1); and a function $MeshPartition(U , M)$ that decomposes $M$ based on the set of partitioned subgraphs $U$, and returns a partition of $M$, denoted as $M^{'}$, and the number of cuts $N$ . The following algorithm sketches the idea of the skeleton decomposition algorithm. The main idea is to randomly search for candidate subgraphs using Monte Carlo Method, which randomly chooses a node of $G$ to start traversing and randomly grows the subgraph while paying attention to the constraints.
 
 \begin{algorithm}
-\caption{$SkeletonDecomposition(S, M)$}
+\caption{$Skeleton\_Mesh\_Decomposition(S, M)$}
 \label{alg:Framwork}
 \begin{algorithmic}[1]
 \REQUIRE~
-The Laplacian skeleton $S$ and mesh model $M$;
+The Laplacian skeleton $S$ and mesh model $M$.
 \ENSURE~
-The decomposition of $M$ into the least pieces of components,  
-
-a set of subgraphs $T$ that satisfies constraint (1), and 
-
-
-
+The decomposition of $M$ into the least pieces of components that are free of support.
 
 %; a partition of $M$ based on $T$ that satisfies constraint (2-4)
-\STATE $T = \emptyset$; $min = \inf$; $count$ = 0; $max\_iter$ = a user defined large constant;
+\STATE $M_{opt} = \emptyset$; $min = \inf$; $count$ = 0; $max\_iter$ = a user defined large constant;
 \WHILE {$count < max\_iter$}
-\STATE  $G=S$; $U= \emptyset$;
-\WHILE {$G\neq \emptyset$}
-\FOR{$i=1$; $i<| S |$; $i++$ }
-\STATE $H = Trim\_BFS(v_i, G, \theta)$;
+\STATE  $U= \emptyset$;
+\WHILE {$S\neq \emptyset$}
+\FOR{$i=1$; $i<|| S ||$; $i++$ }
+\STATE $H = Trim\_BFS(v_i, S, \theta)$;
 \STATE $S = S / H$;
 \STATE $U = U \cup H$;
-\STATE $(M^', N) = MeshDecomposition(U , M)$;
-\IF {$N < min$}
-\STATE $T = U$;
-\STATE  $min = | U | $;
-\ENDIF
 \ENDFOR
+\STATE $(M^{'}, N) = MeshPartition(U , M)$;
+\IF {$N < min$}
+\STATE  $min = N$;
+\STATE  $M_{opt} = M^{'}$;
+\ENDIF
 \ENDWHILE
 \STATE $count =count + 1$;
 \ENDWHILE
+\RETURN  $M_{opt}$;
 \label{code:fram:select} \\
 %\STATE call function $Mesh\_Decomposition(M, T)$;
 \end{algorithmic}
@@ -136,7 +132,12 @@ A node $v$ of Laplacian skeleton $S$, an angular value $\theta$.
 \end{algorithm}
 
 Algorithm \ref{alg:trim} demonstrates the growing process. As the order of the chosen arcs influences the shape of the final BFS subgraph, in line $2$, the BFS process randomly chooses an arc incident to $v$ to proceed on. In order to guarantee a greater chance of converging to the optimal result in a short time, we refine Algorithm \ref{alg:trim} by inducing probabilities of choosing each arc of $S$. We denote this improved version of Algorithm \ref{alg:trim} as \textbf{$Trim\_BFS\_P$}. The main idea of $Trim\_BFS\_P$ is as follows.
-We apply a training-and-learning procedure for the first $k$ (say $1000$) runs. Formally, let $n_v$ be the number of times an arc is chosen as the exit arc when node $v$ is visited. Given the data of the first $k$ runs, as a node $v$ is visited, the probability of choosing an arc $e$ as an outgoing arc in the subsequent runs is, $P(v, e) = n_v/k$. To further speed up the process of $Trim\_BFS$, we assign a mark that stores the minimum number of subgraphs obtained so far, such that the current branching can be terminated if its output number of subgraphs is larger than the mark. Further, as $Trim\_BFS$ is greedy, the growth is towards a local maximal subgraph that satisfies the angle constraints, the resulting partition of Algorithm \ref{alg:Framwork} might not be a global optimum. In order to ensure more possibilities to find a global optimum, we employ a probability-based exploring scheme. In particular, we set the probability of terminating the growing of a subgraph as $r/n$, where $r$ is the size of the current subgraph and $n$ is the size of $S$. This gives high probability for $Trim\_BFS\_P$ to grow in larger sizes while rising the probability of exploring subgraphs of smaller sizes. We implemented it using rejection sampling.
+We apply a training-and-learning procedure for the first $k$ (say $1000$) runs. Formally, let $n_v$ be the number of times an arc is chosen as the exit arc when node $v$ is visited. Given the data of the first $k$ runs, as a node $v$ is visited, the probability of choosing an arc $e$ as an outgoing arc in the subsequent runs is, $P(v, e) = n_v/k$. 
+
+%To further speed up the process of $Trim\_BFS$, we assign a mark that stores the minimum number of subgraphs obtained so far, such that the current branching can be terminated if its output number of subgraphs is larger than the mark.
+
+
+Further, as $Trim\_BFS$ is greedy, the growth is towards a local maximal subgraph that satisfies the angle constraints, the resulting partition of Algorithm \ref{alg:Framwork} might not be a global optimum. In order to ensure more possibilities to find a global optimum, we employ a probability-based exploring scheme. In particular, we set the probability of terminating the growing of a subgraph as $r/n$, where $r$ is the size of the current subgraph and $n$ is the size of $S$. This gives high probability for $Trim\_BFS\_P$ to grow in larger sizes while rising the probability of exploring subgraphs of smaller sizes. We implemented it using rejection sampling.
 
 %Since the traversing process assigns a specific direction to each arc that was originally undirected in $S$, it is not obvious whether the angle constraint is satisfied, To clarify this, we provide the following lemma.
 
@@ -166,7 +167,10 @@ We apply a training-and-learning procedure for the first $k$ (say $1000$) runs. 
 \end{figure}
 
 
-\textbf{Mesh Partition.} The skeleton partition returns a set of nodes where the mesh partition should occur, in particular, the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. We need to determine the exact positions and orientations of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting scheme.
+%\textbf{Mesh Partition.} 
+
+\ca{In the following section, we shall describe how MeshPartition(U , M) works as a cut is required around a skeleton node $v$. Codes are ommitted for brevity.}
+The skeleton partition returns a set of nodes where the mesh partition should occur, in particular, the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. We need to determine the exact positions and orientations of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting scheme.
 
 
 Refer to Figure \ref{fig:fillets}, at the position of node $v$, we want to find a surface vertex $q \in M$ around $v$ through which the cutting plane should pass, while the cutting length is minimized. Let us denote the set of all planes which pass through a surface vertex $p$ and are orthogonal to vectors in $cone(H_i)$ (originated from $p$)  as $F(H_i)$, which we term as a \emph{fillet}. Then if the node $v$ is incident to two subgraphs $H_i$ and $H_j$, we have two plane sets $F(H_i)$ and $F(H_j)$ at point $p$, respectively. Depending on the relative position of $F(H_i)$ and $F(H_j)$, we have the following two cases. \emph{Case (i)}: $F(H_i) \cap F(H_j) \neq \emptyset$. In this case, we shall randomly sample a set of cutting planes from $F(H_i) \cap F(H_j)$, and determine the one achieving the minimum cutting length; \emph{Case (ii):} $F(H_i) \cap F(H_j) = \emptyset$. In this case, two cuts are required in order to separate the mesh into support-free subparts. However, care must be taken as the angle between $c_1$ and $c_2$ should be constrained by $A(c_1, c_2) \leq \theta$. If this constraint is violated, one more cut in between $c_1$ and $c_2$ is required; while the base of each partitioned component should be no less than $\tau$. If any of the constraint is not satisfied, we shall translate the fillets along the printing direction in an opposite sense until the constraints are satisfied.
@@ -191,13 +195,6 @@ Next, we proceed to find a cutting plane around $v$. We first extend the region 
 In order to determine whether a cutting plane cuts through any subgraph other than $H_i$, we take advantage of the correspondence between the mesh vertices and the skeleton nodes. Since each vertex of $M$ is mapped to a single node of $S$ \cite{AuTCCL08}, as a cut goes through the mesh surface, the endpoints of the edges of $M$ that are penetrated through give us the information of the potential subgraph that is cut through. Approximately, if a cut $c$ goes into an edge whose endpoints are incident to a subgraph $H_j$, then $c$ cuts through $H_j$.
 
 %On the other hand, if $v$ is an internal node to at least two subgraphs, see Figure \ref{fig:cross}, then a partition of one subgraph around $v$ is inevitable. The partition scheme follows from the operations on the fillets.
-
-
-
-
-
-
-
 
 Sometimes, it is possible for a mesh component which is not printable free of support even though its corresponding skeleton is detected to be printable free of support. This is because the skeleton piece that shares a junction node with some other subgraph may compromise its topology locally \cite{AuTCCL08}, and therefore cannot precisely describe the local topology feature of the partitioned component. In this case, we search along the skeleton and further partition it with an additional cut. Refer to Figure \ref{fig:arm} for an illustration. Empirically, we found this rarely happened.
 
