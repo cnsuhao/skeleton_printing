@@ -90,21 +90,19 @@ We have run our algorithm on various natural or man-made models, and some of the
 
 The algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. The algorithm is run on each model for 8000 runs with the first 1000 runs taken as a training-and-learning process, the running time of processing the models are summarized in Table \ref{tab:ertms:time}. Figure \ref{fig:experiment} shows the comparison of the printing effects of the original models and our partitioned models. Due to the limit of the current technology, any FDM printer requires a small amount of supporting bed for holding the printed model on the printing platform, other printing techniques such as SLA, SLM and SLS may avoid the use of these supporting beds. Therefore, our approach guarantees support-free to the most extent for all existing printing techniques.
 
-\hl {[Evaluations: how close we are to the global optimum][Limitations: discussion about 1. the strength of our interior, -- future work. 2. cut through salient regions -- hard to balance. etc]} \youyi{We need some efforts in the paragraph below.}
+\hl {[Evaluations: how close we are to the global optimum][Limitations: discussion about 1. the strength of our interior, -- future work. 2. cut through salient regions -- hard to balance. etc]} \youyi{We need some efforts in the paragraph below.----------I have moved related wordings into the conclusion section.}
 
 %Since the problem of partitioning the skeleton graph into the least number of support-free subgraphs is NP-hard,
-Since the partition of $S$ may have exponential amount of choices, it is impossible to obtain an optimal mesh partition in polynomial time. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the final partition result. However, from Table \ref{tab:ertms:summary}, we can conclude that the partition result for the skeletons and mesh models are small enough. Further, we can evaluate our skeleton partition result by examining some simple skeleton examples with obvious optimal partition numbers.
+Since the partition of $S$ may have exponential amount of choices, it is impossible to obtain an optimal mesh partition in polynomial time. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the partition result. However, from Table \ref{tab:ertms:summary}, we can conclude that the partition numbers for the skeletons and mesh models are small enough. Further, we can evaluate our partition result by examining some simple examples.
 
-Refer to the shell model in Figure \ref{fig:cube}, the skeleton cannot be printed as a whole in a support-free manner due to the cross on the top facet. Our algorithm partitions the skeleton into two parts (shown in red and green respectively), and is therefore optimal. Note that the bars are hollow in the mesh model, therefore any support-free solid model based partition method (e.g., the one provided by \cite{Hu_siga14}) cannot be applied, and our skeleton-based partition method is preferable. In reality, any natural mesh model are round in the sense that no flat platform is available for standing on the ground, and therefore at least one cut into two parts is required. Refer to Figure \ref{BBBB}, our algorithm partitions the tree-liked model in two parts, and is therefore optimal. 
+In practice, most natural mesh models are round in the sense that there is no flat platform for supporting it on the ground, and therefore at least one cut is required. Refer to the  tree-liked shell model in Figure \ref{fig:simpletree}, our algorithm partitions the model into two parts (shown in red and blue respectively) with one cut, and is therefore optimal.
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=0.4\textwidth]{figs/cube.png}
-  \caption{\label{fig:cube}%
-           An illustration of a shell model (a) and its skeleton is partitioned into the least pieces by our algorithm (b). The vectors in the the right figure indicate the printing directions.}
+  \includegraphics[width=0.2\textwidth]{figs/simpletree.png}
+  \caption{\label{fig:simpletree}%
+           An illustration of a simplified tree model that is partitioned into the least pieces by our algorithm.}
 \end{figure}
-
-
 
 
 %Further, our current approach of partitioning tries to find a node as a root of a subgraph, while in general it is possible that the subgraph is unrooted. For example, in Figure \ref{fig:unrooted}, under the angle constraint of $\theta = 70{\circ}$, the tree skeleton can be taken as a whole printable graph while our algorithm would take node $v$ as a root for the upper and lower parts of the tree respectively. Future research can be elaborated along this line. But how the general unrooted subgraphs are taken efficiently other than  searching in an exhaustive combinatorial manner to form a minimum set of subgraphs is unknown.
