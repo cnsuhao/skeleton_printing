@@ -171,9 +171,9 @@ Refer to Figure \ref{fig:fillets}, at the position of node $v$, we want to find 
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=0.4\textwidth]{figs/forward_tracing.png}
+  \includegraphics[width=0.5\textwidth]{figs/forward_tracing.png}
   \caption{\label{fig:forward_tracing}%
-           2D illustration of R(v) and the cuts, all vertices in $R(v)$ are shown in green, and the cuts associated with a vertex are shown in dashed lines:(a) the case of cuts around concave points; (b) the case of cuts on a cylindrical part.}
+           2D illustration of $R(v)$ and the cuts, all vertices in $R(v)$ are shown in green, and the cuts associated with a vertex are shown in dashed lines:(a) the case of cuts around concave points; (b) the case of cuts on a cylindrical part.}
 \end{figure}
 
 In either case, a cut that nicely follows the geometry features is demanded in order to preserve aesthetic appearance in the final assembled object. We exploit shape concavity to look for a good cut as indicated by minima rule \cite{hoffman1984parts,hoffman1997salience}. However, the positions of the skeleton nodes may not locally reflect the geometric features such as concave areas on the mesh surface, therefore they are insufficient for a nice partition of the mesh. To compensate this, we exploit the concave vertices of the mesh that are incident to the skeleton nodes and take those that significantly concave into a candidate set of pivots for the cuts. More precisely, let $R(v)$ be the set of concave vertices on $M$ that are incident to $v$ during the Laplacian shrinking process \cite{AuTCCL08}, we truncate $R(v)$ such that the insignificant concave vertices are removed away. Here, given a vertex $v_i$ and any of its neighbor $v_j$, $v_i$ is concave if $(v_i - v_j)(n_j - n_i)$ is nonnegative, the significance of a concave vertex can be quantified as the magnitude of $(v_i - v_j)(n_j - n_i)$ \cite{au2012mesh}, denoted as $\tau_i$. We collect vertices whose $\tau_i$ is greater than a threshold $\delta$.
