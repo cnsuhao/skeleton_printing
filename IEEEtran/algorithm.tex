@@ -1,15 +1,10 @@
 \section{Algorithm}
 %\textbf{Skeleton Partition.}
-Let $M$ denote the mesh model, and let S denote the Laplacian skeleton obtained via the algorithm provided in \cite{AuTCCL08}. We propose an algorithm for partitioning $M$ into a minimum set of \emph{disjoint} components, each of which can be fabricated in a 3D printer without using any support structure. Decomposing $S$ into two pieces can be done by duplicating a node $v$; while partitioning $M$ at node $v$ requires the determination of the position and normal of a cutting plane. To guarantee an aesthetical look on the resulting surface with shortest seams, we need a constraint to minimize the peripheral length of the cut in terms of the position and normal of the cutting plane. Note that the orientation of the cutting plane affects the printing direction and thus the shape of the subgraph while on the contrary, the shape of the subgraph constrains the orientation of the cutting plane. Hence, this is an essential \emph{chicken-and-egg} problem. In addition, we also need to consider the printing volume limit, i.e., the volume of the printing model should be within the working volume of a given 3{D} printer.
-
+Let $M$ denote the mesh model, and let S denote the Laplacian skeleton obtained via the algorithm provided in \cite{AuTCCL08}. We propose an algorithm for partitioning $M$ into a minimum set of \emph{disjoint} components, each of which can be fabricated by a 3D printer without using any support structure. Decomposing $S$ into two pieces can be done by duplicating a node $v$; while partitioning $M$ at node $v$ requires the determination of the position and normal of a cutting plane. To guarantee an aesthetical look on the resulting surface with shortest seams, we need a constraint to minimize the peripheral length of the cut in terms of the position and normal of the cutting plane. Note that the orientation of the cutting plane affects the printing direction and thus the shape of the subgraph while on the contrary, the shape of the subgraph constrains the orientation of the cutting plane. Hence, this is an essential \emph{chicken-and-egg} problem. {\color{red}{In addition, we need the assumption that the volume of the printing model should be within the working volume of a given 3{D} printer.}
+%In addition, we also need to consider the printing volume limit, i.e., the volume of the printing model should be within the working volume of a given 3{D} printer.
 To summarize, our objectives are the minimization of: (1) the number of partitioned components $N$ of the mesh model; (2) the total peripheral length of each cut $L_i$, i.e., $\Sigma L_i$. The constraints of the problem are as follows:
-
-
 (i) Each arc of the partitioned subgraph $H_i$ subtends to an axis by an angle of no larger than $\theta$, where $\theta$ is a printer-dependent parameter obtained from experiments. This guarantees that the corresponding mesh component is support-free during the printing process;
-
-
 (ii) As the directed arcs of $H_i$ are translated to a common origin, they form a fork (see Figure \ref{fig:cone}). Let $a$ and $b$ be the pair of farthest vectors in the fork, i.e., the angle between $a$ and $b$, denoted as $\alpha$, is the largest. Let the central ray of the minimum cone that encloses the fork be denoted as $r(H_i)$, then $r(H_i)$ is collinear with $a + b$. Then the feasible directions of printing $H_i$ without using any support is bounded by a solid cone centered at $r(H_i)$ with an apex angle of $2\theta - \alpha$ (Figure \ref{fig:cone}). Therefore, let $b(H_i)$ be the base cut of the mesh part that corresponds to the root of $H_i$ {(by base cut we mean the cutting boundary which adheres to the printing platform when the part is being printed, see Figure \ref{fig:ex1} (d))}, then $b(H_i)$ is orthogonal to some vector $\hat{e}$ in $cone(H_i)$. %This guarantees that the base can be placed on the 3D printing platform.
-
 Thereafter, in order to guarantee support-free fabrication of any cut other than the base, the angle between any non-base cut and the base cut should be no larger than $\theta$ since the base cut determines the printing direction. More precisely, any other cut $c$ separating subgraph $H_i$ from another subgraph $H_j$ should satisfy the constraint that the angle between $c$ and $b(H_i)$ is no larger than $\theta$. Let $A(c, b(H_i))$ denote the angle, then $A(c, b(H_i)) \leq \theta$. Since a cut separates the mesh into two parts, possibly sacrificing the angle constraint of the mesh part corresponding to a subgraph adjacent to $H_i$, an additional cut respecting the angle constraint of the adjacent subgraph may be required. Detailed steps for addressing this issue is given in the section for Mesh Partition below.
 
 \begin{figure}[t]
@@ -20,13 +15,8 @@ Thereafter, in order to guarantee support-free fabrication of any cut other than
 \end{figure}
 
 %As a cut partitions a shell model, one facet is generated for the CAD model, but it two facets are generated physically, . Let the normal direction of the cut $c$ (pointing to the exterior of the partitioned part) be denoted as $n(c)$.
-
 %Mathematically, a cut behaves as a single facet for the mesh; but it results in two facets on the appearance of the physical model. With the physical understanding, for each cut c, let $c_1$ and $c_2$ be the two facets on the physical model. Since $M$ is a shell mode, $c_1$ and $c_2$ are two annular-shaped plane facets. Let $n(c_1)$ be the normal direction of $c_1$ that points into the interior of the shell. $n(c_1)$ is defined similarly.
-
-
 (iii) The base of a printing model should be large enough to gather sticky force from the building platform, such that the model is not deformed during the building process. Formally, let $area(b(H_i))$ denote the area of the base of the mesh component corresponding to $H_i$, which is approximately equal to the peripheral length of the base times the thickness of the shell. let $\tau$ be a user-defined threshold value, then we have $b(H_i) \geq \tau$. Here $\tau$ can be determined empirically; Finally,
-
-
 (iv) Each cut partitions a single subgraph.
 
 We have the following optimization system:
@@ -80,9 +70,6 @@ The decomposition of $M$ into the least pieces of components that are free of su
 %\STATE call function $Mesh\_Decomposition(M, T)$;
 \end{algorithmic}
 \end{algorithm}
-
-
-
 
 \begin{figure}[tbp]
   \centering
@@ -163,7 +150,7 @@ Further, as $Trim\_BFS\_II$ is greedy, the growth is towards a local maximal sub
 
 
 \textbf{Mesh Partition.}
-{In the following section, we shall describe how MeshPartition(U , M) works as a cut is required around a skeleton node $v$. Codes are ommitted for brevity.}
+{In the following section, we shall describe how MeshPartition(U , M) works as a cut is required around a skeleton node $v$. Codes are omitted for brevity.}
 The skeleton partition returns a set of nodes where the mesh partition should occur, in particular, the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. We need to determine the exact positions and orientations of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting scheme.
 
 
