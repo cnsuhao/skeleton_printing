@@ -36,7 +36,7 @@ where all $H_i$-s constitute a partition of the original graph. A direct explora
 
 We separate the minimization of the two target terms sequentially, i.e., the number of mesh components and the total cutting length. In the following, we shall discuss how the skeleton and mesh are partitioned in details.
 
-\textbf{Skeleton Partition.} {\color{red}{To minimize the number of mesh components, we need to provide a proper set of partitioned subgraphs from $S$.}} 
+\textbf{Skeleton Partition.} {{To minimize the number of mesh components, we need to provide a proper set of partitioned subgraphs from $S$.}}
 For this purpose, we use a randomized exploration strategy, but give a higher probability to explore the graph broadly. In particular, assume that we are given a function $Trim\_BFS(v, G, \theta)$ which traverses $G$ from $v$ in a breath first search manner to progressively collect arcs which satisfy Constraint (1); and a function $MeshPartition(U , M)$ that decomposes $M$ based on the set of partitioned subgraphs $U$, and returns a partition of $M$, denoted as $M^{'}$, and the number of cuts $N$. Algorithm \ref{alg:Framwork} sketches the idea of the skeleton decomposition {{by minimizing $N$}}. The main idea is to randomly search for candidate subgraphs using Monte Carlo Method, which randomly chooses a node of $G$ to start traversing and randomly grows the subgraph while paying attention to the aforementioned constraints.
 
 \begin{algorithm}
