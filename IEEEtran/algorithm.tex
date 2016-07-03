@@ -8,12 +8,12 @@ To summarize, our objectives are the minimization of: (1) the number of partitio
 \begin{itemize}
 \item (i) Each arc of the partitioned subgraph $H_i$ subtends to an axis by an angle of no larger than $\theta$, where $\theta$ is a printer-dependent parameter obtained from experiments. This guarantees that the corresponding mesh component is support-free during the printing process;
 
-\item (ii) As the directed arcs of $H_i$ are translated to a common origin, they form a fork (see Figure \ref{fig:cone}). Let $a$ and $b$ be the pair of farthest vectors in the fork, i.e., the angle between $a$ and $b$, denoted as $\alpha$, is the largest. Let the central ray of the minimum cone that encloses the fork be denoted as $r(H_i)$, then $r(H_i)$ is collinear with $a + b$. Then the feasible directions of printing $H_i$ without using any support is bounded by a solid cone centered at $r(H_i)$ with an apex angle of $2\theta - \alpha$ (Figure \ref{fig:cone}). Therefore, let $b(H_i)$ be the base cut of the mesh part that corresponds to the root of $H_i$ {(by base cut we mean the cutting boundary which adheres to the printing platform when the part is being printed, see Figure \ref{fig:ex1} (d))}, then $b(H_i)$ is orthogonal to some vector $\hat{e}$ in $cone(H_i)$. %This guarantees that the base can be placed on the 3D printing platform.
-    {\color{red}{Define the normal direction of each facet of a mesh component as pointing outwards. For a facet $c$ in a mesh component with base $b(H_i)$, we denote $n(c)$ as its normal direction. A cut on a shell model will result in two identical annuluses on the shell model. In order to guarantee support-free fabrication of any cut other than the base, each cut $c$ (a facet) in a mesh component with base $b(H_i)$ should satisfy the constraint that the angle between $n(c)$ and $n(b(H_i))$ is no smaller than $\pi/2-\theta$. Let $A(n(c),n(b(H_i)))$ denote the angle, then $A(n(c),n(b(H_i))) \geq \pi/2-\theta$. }} Since a cut separates the mesh into two parts, possibly sacrificing the angle constraint of the mesh part corresponding to a subgraph adjacent to $H_i$, an additional cut respecting the angle constraint of the adjacent subgraph may be required. Detailed steps for addressing this issue is given in the section for Mesh Partition below.
+%\item (ii) As the directed arcs of $H_i$ are translated to a common origin, they form a fork (see Figure \ref{fig:cone}). Let $a$ and $b$ be the pair of farthest vectors in the fork, i.e., the angle between $a$ and $b$, denoted as $\alpha$, is the largest. Let the central ray of the minimum cone that encloses the fork be denoted as $r(H_i)$, then $r(H_i)$ is collinear with $a + b$. Then the feasible directions of printing $H_i$ without using any support is bounded by a solid cone centered at $r(H_i)$ with an apex angle of $2\theta - \alpha$ (Figure \ref{fig:cone}). Therefore, let $b(H_i)$ be the base cut of the mesh part that corresponds to the root of $H_i$ {(by base cut we mean the cutting boundary which adheres to the printing platform when the part is being printed, see Figure \ref{fig:ex1} (d))}, then $b(H_i)$ is orthogonal to some vector $\hat{e}$ in $cone(H_i)$. %This guarantees that the base can be placed on the 3D printing platform.
+%    {\color{red}{Define the normal direction of each facet of a mesh component as pointing outwards. For a facet $c$ in a mesh component with base $b(H_i)$, we denote $n(c)$ as its normal direction. A cut on a shell model will result in two identical annuluses on the shell model. In order to guarantee support-free fabrication of any cut other than the base, each cut $c$ (a facet) in a mesh component with base $b(H_i)$ should satisfy the constraint that the angle between $n(c)$ and $n(b(H_i))$ is no smaller than $\pi/2-\theta$. Let $A(n(c),n(b(H_i)))$ denote the angle, then $A(n(c),n(b(H_i))) \geq \pi/2-\theta$. }} Since a cut separates the mesh into two parts, possibly sacrificing the angle constraint of the mesh part corresponding to a subgraph adjacent to $H_i$, an additional cut respecting the angle constraint of the adjacent subgraph may be required. Detailed steps for addressing this issue is given in the section for Mesh Partition below.
 
-\item (iii) The base of a printing model should be large enough to gather sticky force from the building platform, such that the model is not deformed during the building process. Formally, let $area(b(H_i))$ denote the area of the base of the mesh component corresponding to $H_i$, which is approximately equal to the peripheral length of the base times the thickness of the shell. let $\tau$ be a user-defined threshold value, then we have $b(H_i) \geq \tau$. Here $\tau$ can be determined empirically;
+\item (ii) The base of a printing model should be large enough to gather sticky force from the building platform, such that the model is not deformed during the building process. Formally, let $area(b(H_i))$ denote the area of the base of the mesh component corresponding to $H_i$, which is approximately equal to the peripheral length of the base times the thickness of the shell. let $\tau$ be a user-defined threshold value, then we have $b(H_i) \geq \tau$. Here $\tau$ can be determined empirically;
 
-\item Finally, (iv) Each cut partitions a single subgraph.
+\item Finally, (iii) Each cut partitions a single subgraph.
 
 \end{itemize}
 
@@ -32,9 +32,9 @@ We have the following optimization system:
 \quad \text{subject to:} \\
 & A(e, r(H_i)) \leq \theta, \; i = 1, \ldots, m, \forall e \in H_i, & (1)\\
 & b(H_i) \bot \hat{e}, \exists \hat{e} \in cone(H_i), & (2)\\
-& A(n(c),n(b(H_i))) \geq \pi/2-\theta, & (3)\\
-& area(b(H_i)) \geq \tau, & (4)\\
-& cut \cap S = cut \cap H_i, cut \in \{b(H_i), c\}  & (5)
+%& A(n(c),n(b(H_i))) \geq \pi/2-\theta, & (3)\\
+& area(b(H_i)) \geq \tau, & (3)\\
+& cut \cap S = cut \cap H_i, cut \in \{b(H_i), c\}  & (4)
 \end{aligned}
 \end{equation*}
 where all $H_i$-s constitute a partition of the original graph. A direct exploration of all possible partitions over the graph $G$ could quickly leads to exponential complexity. The key here is to quickly find potential good partitions in a way that subsequent exploration of the graph is limited to those which leads to a less value of the optimization function. We employ a randomized Monte Carlo algorithm detailed below.
@@ -60,11 +60,11 @@ The decomposition of $M$ into the least pieces of components that are free of su
 \STATE  $X= S$;
 \WHILE {$S\neq \emptyset$}
 %\FOR{$i=1$; $i<|| S ||$; $i++$ }
-\FOR{a random node $v \in S $ }
+\WHILE{a random node $v \in S $ }
 \STATE $H = Trim\_BFS(v, X, \theta)$;
 \STATE $X = X / H$;
 \STATE $U = U \cup H$;
-\ENDFOR
+\ENDWHILE
 \STATE $(M^{'}, N) = MeshPartition(U , M)$;
 \IF {$N < min$}
 \STATE  $min = N$;
@@ -101,7 +101,7 @@ A node $v$ of Laplacian skeleton $S$, an angular value $\theta$.
  %A maximal subgraph $H$ rooted at $v$ and its corresponding mesh component that meet the constraints $(Eq.1-4)$.
  A subgraph $H$ rooted at $v$ that meets constraint (1).
 \STATE starting from $v$, initialize F($\hat{e_i}$, $\hat{e_j}$); $H = \emptyset $;
-\WHILE  {the current arc $e_k$ of $S$ picked by the BFS process is nonempty}
+\WHILE  {a random arc $e_k$ of $S$ visited by BFS}
   \IF  {$A(\overrightarrow{oc_{i,j}},  \hat{e_k}) \leq A(\overrightarrow{oc_{i,j}},  \hat{e_i})$}
   \STATE  $H = H \cup \{e_k\}$;
   \ELSIF {$A(\overrightarrow{oq},  \hat{e_k}) \leq  2\theta$}
@@ -159,9 +159,7 @@ Further, as $Trim\_BFS\_II$ is greedy, the growth is towards a local maximal sub
 \textbf{Mesh Partition.}
 {{In the following section, we shall describe how $MeshPartition(U , M)$ works as a cut is required around a skeleton node $v$. Here the pseudocode is omitted for brevity.}}
 The skeleton partition returns a set of nodes where the mesh partition should occur, in particular, the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. We need to determine the exact positions and orientations of the cutting planes. For each node $v$ that is incident to at least two distinct subgraphs $H_i$ and $H_j$, we process it using the following cutting scheme.
-
-
-Refer to Figure \ref{fig:fillets}, at the position of node $v$, we want to find a surface vertex $q \in M$ around $v$ through which the cutting plane should pass, while the cutting length is minimized. Let us denote the set of all planes which pass through a surface vertex $p$ and are orthogonal to vectors in $cone(H_i)$ (originated from $p$)  as $F(H_i)$, which we term as a \emph{fillet}. If the node $v$ is incident to two subgraphs $H_i$ and $H_j$, we have two plane sets $F(H_i)$ and $F(H_j)$ at point $p$, respectively. Depending on the position of $p$, we have the following two cases. \emph{Case (i)}: $F(H_i) \cap F(H_j) \neq \emptyset$. In this case, we shall randomly sample a set of cutting planes from $F(H_i) \cap F(H_j)$, and determine the one achieving the minimum cutting length; \emph{Case (ii):} $F(H_i) \cap F(H_j) = \emptyset$. In this case, two cuts $c_1$ and $c_2$ are required in order to separate the mesh into support-free subparts. However, care must be taken as the angle between $c_1$ and $c_2$ should be constrained by $A(c_1, c_2) \leq \theta$. If this constraint is violated, one more cut in between $c_1$ and $c_2$ is required. Meanwhile, the base of each partitioned component should be no less than $\tau$. If any of the constraint is not satisfied, we shall translate the fillets along the printing direction in an opposite sense until the constraints are satisfied.
+Refer to Figure \ref{fig:fillets}, at the position of node $v$, we want to find a surface vertex $q \in M$ around $v$ through which the cutting plane should pass, while the cutting length is minimized. Let us denote the set of all planes which pass through a surface vertex $p$ and are orthogonal to vectors in $cone(H_i)$ (originated from $p$)  as $F(H_i)$, which we term as a \emph{fillet}. If the node $v$ is incident to two subgraphs $H_i$ and $H_j$, we have two plane sets $F(H_i)$ and $F(H_j)$ at point $p$, respectively. Depending on the position of $p$, we have the following two cases. \emph{Case (i)}: $F(H_i) \cap F(H_j) \neq \emptyset$. In this case, we shall randomly sample a set of cutting planes from $F(H_i) \cap F(H_j)$, and determine the one achieving the minimum cutting length; \emph{Case (ii):} $F(H_i) \cap F(H_j) = \emptyset$. In this case, two cuts $c_1$ and $c_2$ are required in order to separate the mesh into support-free subparts. However, care must be taken as the angle between $c_1$ and $c_2$ should be constrained by $A(c_1, c_2) \leq \pi/2-\theta$. If this constraint is violated, one more cut in between $c_1$ and $c_2$ is required. Meanwhile, the base of each partitioned component should be no less than $\tau$. If any of the constraint is not satisfied, we shall translate the fillets along the printing direction in an opposite sense until the constraints are satisfied.
 
 \begin{figure}[tbp]
   \centering
@@ -174,6 +172,26 @@ In either case, a cut that nicely follows the geometry features is demanded in o
 %See Figure \ref{fig:fillets}(c-d), for each vertex in $R(v)$, we shall process a pair of fillets as done for vertex $p$ above.
 Next, we proceed to find a cutting plane around $v$. We first extend $R(v)$ by merging each $R(u)$ into it, where $u$ is an adjacent node of $v$ in $S$. Given all concave vertices in the new $R(v)$, each vertex defines a set of feasible cutting planes in accordance to its $fillet$. By feasible we require that a cutting plane does not cut through any other subgraph except for $H_i$. We then exhaustively go through all feasible cutting planes and find the one whose cutting length is minimum. In case of a cylindrical part that does not merit good concaveness, we reduce the threshold value $\delta$ by half and repeat the procedure until a feasible cutting plane with minimum length is found. Figure \ref{fig:forward_tracing} illustrates the process.
 %Particularly, if $v$ is a leaf node that is merely neighbored to a single node $w$ in subgraph $H_i$, then the separation of the mesh component corresponding to $H_i$ may not be feasible if merely $R(v)$ is used, this is because the position of $v$ is chosen irrespective of the geometric features of the mesh. To separate the mesh component of $H_i$, we process arc $vw$ as follows: Given a user-defined threshold value $\delta$, if $| vw | \leq \delta$, then $R(v)$ is extended to contain the concave vertices of $M$ that are incident to $w$. On the other hand, if $| vw | > \delta$, then a partition of the arc $vw$ by an interval of $\delta$ is carried out. Subsequently, for each node along arc $vw$, the above scheme for processing node $v$ is exploited, see Figure \ref{fig:forward_tracing}. In this process, the tracing of the nodes along $vw$ stops as a cut does not intersect into any other subgraph other than $H_i$. The technique for detecting the intersection is as follows:
+
+
+{\color{red}{Note that a cut on the shell mesh may result in two annuluses each of which appears as a new facet to the mesh, for a facet $c$ on a mesh component with base $b$, $c$ might need some support if its outward pointing normal direction subtends an angle of greater than $pi/2 + \theta$. However, we shall show that this is impossible if both $c$ and $b$  are in a common mesh component $M_i$ that corresponds to a subgraph $H_i$ returned by Algorithm $Trim\_BFS$. Formally, we have the following lemma.
+
+Lemma 1: Given a mesh component $M_i$ corresponding to a subgraph $H_i$ returned by Algorithm $Trim\_BFS$, each facet $c$ of $M_i$ that results from a non-base cut is free of support for 3D printing.
+
+Proof:  See Figure \ref{fig:nonbasecut} for a 2D illustration, let $b$ the base of $M_i$ that is set on the ground, then the printing direction is vertical. We shall proof the correctness of the lemma by the construction of $M_i$.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.3\textwidth]{figs/nonbasecut.png}
+  \caption{\label{fig:nonbasecut}%
+           Proof of Lemma 1: The red lines indicate the skeletons, the dashed lines indicate the cuts.}
+\end{figure}
+
+Each arc of $H_i$ subtends to the horizon by an angle of no smaller than $\pi/2 - \theta$. Let $c$ be a facet left on $M_i$ that has an outward pointing normal $n(c)$, if $n(c)$ points upwards, then $c$ is supported by the material of $M_i$ beneath it; on the other hand, $n(c)$ points downwards. In the latter case, let $a$ be the arc of the skeleton that $c$ cuts through, $a$ subtends to the horizon by an angle of $\alpha \geq  \pi/2 - \theta$, $c$ must subtend to the horizon by an angle of larger than $\alpha$, and therefore greater than $\pi/2 - \theta$, which means that $c$ is support free.
+Hence, $c$ requires support if and only if its outward pointing normal $n(c)$ is directed downward and $n(c)$ subtends to the horizon by an angle of smaller than $\pi/2 - \theta$. But his means that $c$ cannot cut through the interior of $M_i$ (e.g., cut $c_3$ in Figure \ref{fig:nonbasecut}), this is a contradiction and completes the proof. \qed }}
+
+
+
 In order to determine whether a cutting plane cuts through any subgraph other than $H_i$, we take advantage of the correspondence between the mesh vertices and the skeleton nodes. Since each vertex of $M$ is mapped to a single node of $S$ \cite{AuTCCL08}, as a cut goes through the mesh surface, the endpoints of the edges of $M$ that are intersected give us the information of the potential subgraph that is cut through. Approximately, if a cut $c$ goes into an edge whose endpoints are incident to a subgraph $H_j$, then $c$ cuts through $H_j$.
 %On the other hand, if $v$ is an internal node to at least two subgraphs, see Figure \ref{fig:cross}, then a partition of one subgraph around $v$ is inevitable. The partition scheme follows from the operations on the fillets.
 
