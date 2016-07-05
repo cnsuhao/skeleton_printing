@@ -11,7 +11,7 @@ To summarize, our objectives are the minimization of: (1) the number of partitio
 %\item (ii) As the directed arcs of $H_i$ are translated to a common origin, they form a fork (see Figure \ref{fig:cone}). Let $a$ and $b$ be the pair of farthest vectors in the fork, i.e., the angle between $a$ and $b$, denoted as $\alpha$, is the largest. Let the central ray of the minimum cone that encloses the fork be denoted as $r(H_i)$, then $r(H_i)$ is collinear with $a + b$. Then the feasible directions of printing $H_i$ without using any support is bounded by a solid cone centered at $r(H_i)$ with an apex angle of $2\theta - \alpha$ (Figure \ref{fig:cone}). Therefore, let $b(H_i)$ be the base cut of the mesh part that corresponds to the root of $H_i$ {(by base cut we mean the cutting boundary which adheres to the printing platform when the part is being printed, see Figure \ref{fig:ex1} (d))}, then $b(H_i)$ is orthogonal to some vector $\hat{e}$ in $cone(H_i)$. %This guarantees that the base can be placed on the 3D printing platform.
 %    {\color{red}{Define the normal direction of each facet of a mesh component as pointing outwards. For a facet $c$ in a mesh component with base $b(H_i)$, we denote $n(c)$ as its normal direction. A cut on a shell model will result in two identical annuluses on the shell model. In order to guarantee support-free fabrication of any cut other than the base, each cut $c$ (a facet) in a mesh component with base $b(H_i)$ should satisfy the constraint that the angle between $n(c)$ and $n(b(H_i))$ is no smaller than $\pi/2-\theta$. Let $A(n(c),n(b(H_i)))$ denote the angle, then $A(n(c),n(b(H_i))) \geq \pi/2-\theta$. }} Since a cut separates the mesh into two parts, possibly sacrificing the angle constraint of the mesh part corresponding to a subgraph adjacent to $H_i$, an additional cut respecting the angle constraint of the adjacent subgraph may be required. Detailed steps for addressing this issue is given in the section for Mesh Partition below.
 
-\item (ii) The base of a partitioned model corresponding to a subgraph $H_i$ is orthogonal to some vector in $cone(H_i)$.
+\item (ii) The base of a partitioned model corresponding to a subgraph $H_i$ is orthogonal to some vector in $cone(H_i)$, where $cone(H_i)$ is the cone that encapsulate all valid support-free printing directions in accordance to arcs in $H_i$ when printed (see Figure \ref{fig:cone}).
 
 \item (iii) The base of a partitioned model should be large enough to gather sticky force from the building platform, such that the model is not deformed during the building process. Formally, let $area(b(H_i))$ denote the area of the base cut of the mesh component corresponding to $H_i$, which is approximately equal to the peripheral length of the base times the thickness of the shell. let $\tau$ be a user-defined threshold value, then we have $b(H_i) \geq \tau$. Here $\tau$ can be determined empirically;
 
@@ -23,7 +23,7 @@ To summarize, our objectives are the minimization of: (1) the number of partitio
   \centering
   \includegraphics[width=0.7\linewidth]{figs/cone.png}
   \caption{\label{fig:cone}%
-           Illustration of $r(H_i)$ and $cone(H_i)$.}
+           Illustration of $r(H_i)$ and $cone(H_i)$. $Cone(H_i)$ encapsulates all valid directions w.r.t. all the arcs in $H_i$ in order to make a support-free printing starting from the base.}
 \end{figure}
 
 
