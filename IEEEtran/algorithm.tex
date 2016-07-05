@@ -60,7 +60,7 @@ The decomposition of $M$ into the least pieces of components that are free of su
 \STATE  $X= S$;
 \WHILE {$X \neq \emptyset$}
 %\FOR{$i=1$; $i<|| S ||$; $i++$ }
-\STATE { pick a random node $v \in S $ }
+\STATE { pick a random node $v \in X $ }
 \STATE $H = Trim\_BFS(v, X, \theta)$;
 \STATE $X = X / H$;
 \STATE $U = U \cup H$;
@@ -82,7 +82,7 @@ The decomposition of $M$ into the least pieces of components that are free of su
 \end{algorithmic}
 \end{algorithm}
 
-\begin{figure}[tbp]
+\begin{figure}[b]
   \centering
   \includegraphics[width=0.7\linewidth]{figs/take_arc.png}
   \caption{\label{fig:sphere}%
@@ -151,7 +151,7 @@ Further, as $Trim\_BFS\_II$ is greedy, the growth is towards a local maximal sub
 
 
 
-\begin{figure}[t]
+\begin{figure}[b]
   \centering
   \includegraphics[width=0.3\textwidth]{figs/cone-fillet.png}
   \caption{\label{fig:fillets}%
@@ -166,7 +166,7 @@ Refer to Figure \ref{fig:fillets}, at the position of node $v$, we want to find 
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=0.5\textwidth]{figs/forward_tracing.png}
+  \includegraphics[width=0.5\textwidth]{figs/forward_tracing.pdf}
   \caption{\label{fig:forward_tracing}%
            2D illustration of $R(v)$ and the cuts, all vertices in $R(v)$ are shown in green, and the cuts associated with a vertex are shown in dashed lines. (a) The case of cuts around concave points; (b) the case of cuts on a cylindrical part.}
 \end{figure}
