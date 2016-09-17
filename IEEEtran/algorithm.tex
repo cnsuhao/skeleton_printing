@@ -3,7 +3,7 @@
 Let $M$ denote the mesh model, and let $S$ denote the Laplacian skeleton obtained via the algorithm provided in \cite{AuTCCL08}. We propose an algorithm for partitioning $M$ into a minimum set of \emph{disjoint} components, each of which can be fabricated by a 3D printer without using any support structure. Decomposing $S$ into two pieces can be done by duplicating a node $v$; while partitioning $M$ at node $v$ requires the determination of the position and normal of a cutting plane. To guarantee an aesthetical look on the resulting surface with shortest seams, we need a constraint to minimize the peripheral length of the cut in terms of the position and normal of the cutting plane. Note that the orientation of the cutting plane affects the printing direction and thus the shape of the subgraph while on the contrary, the shape of the subgraph constrains the orientation of the cutting plane. Hence, this is essentially a \emph{chicken-and-egg} problem. {In addition, we need the assumption that the volume of the printing model should be within the working volume of a given 3{D} printer.}
 
 %In addition, we also need to consider the printing volume limit, i.e., the volume of the printing model should be within the working volume of a given 3{D} printer.
-To summarize, our objectives are the minimization of: (1) the number of partitioned components $N$ of the mesh model; (2) the total peripheral length $L_i$ of each cut $c_i$, i.e., $\Sigma L_i$. The constraints of the problem are as follows:
+In a precise 3D printer with an error of 16-100um (e.g., with SLA and FDM techniques), we find that the deformation on the matching interfaces is subtle and can be ignored. Although the length of the cuts accounts for the aesthetic of the assembled model, we find that the number of cuts affects more: it begs for a precise matching and gluing. If one matches two parts with eyes, matching error and deformation on the resulting assembly is unguaranteed. Therefore, the larger the number of parts, the more efforts it requires to assemble a model in a nice-looking manner. Therefore, we put the number of parts in a higher priority than the total cutting length. To summarize, our objectives are the minimization of: (1) the number of partitioned components $N$ of the mesh model; (2) the total peripheral length $L_i$ of each cut $c_i$, i.e., $\Sigma L_i$. The constraints of the problem are as follows:
 
 \begin{itemize}
 \item (i) Each arc of the partitioned subgraph $H_i$ subtends to an axis by an angle of no larger than $\theta$, where $\theta$ is a printer-dependent parameter obtained from experiments. This guarantees that the corresponding mesh component is support-free during the printing process;
@@ -85,7 +85,7 @@ The decomposition of $M$ into the least pieces of components that are free of su
 \end{algorithm}
 
 Next we shall show how $Trim\_BFS(v, G, \theta)$ works to find a locally maximal subgraph starting at $v$ that satisfies the angle constraint. Let $H$ be the current subgraph obtained so far, initially $H$ is a single directed arc. When an arc $e$ of $G$ is visited, we need to determine whether it should be included into $H$. If the start of each outgoing arc of $H$ is moved to a common origin, then the arcs form a fork of rays (Figure \ref{fig:sphere}). A naive method for judging whether $e$ should be included is to move the start of $e$ to the origin of the fork, and compute the angle between $e$ and each arc of the fork, $e$ is included if the maximum angle between $e$ and each arc of the fork does not exceed 2$\theta$. However, this would lead to $O(n^{2})$ time complexity of $Trim\_BFS(v, G, \theta)$, where $n$ is the size of $G$. To speed up this process, we keep the sum of vectors, denoted as $Sum(H)$; and the current number of directed arcs in $H$, denoted as $num(H)$, then the center of the fork is defined as $Sum(H)/num(H)$. Thereafter, as a new ray $e$ is visited, we compute the acute angle between $e$ and $Sum(H)/num(H)$, if it is no larger than $\theta$, then it is safe to take it into $H$, else otherwise. Clearly, this takes O(1) time in considering an edge.
- 
+
 \begin{comment}
 
 \begin{figure}[b]
@@ -130,7 +130,7 @@ A node $v$ of Laplacian skeleton $S$, an angular value $\theta$.
 \end{algorithmic}
 \end{algorithm}
 \end{comment}
-%Algorithm \ref{alg:trim} demonstrates the growing process. 
+%Algorithm \ref{alg:trim} demonstrates the growing process.
 
 In growing $H$, the order of the chosen arcs influences the shape of the final BFS subgraph. the BFS process randomly chooses an arc incident to $v$ to proceed on. In order to guarantee a greater chance of converging to the optimal result in a short time, we introduce probabilities of choosing each arc of $S$. We denote this algorithm as \textbf{$Trim\_BFS$}, the main idea of $Trim\_BFS$ is as follows.
 We apply a training-and-learning procedure for the first $k$ (say $1000$) runs. Formally, let $n_v$ be the number of times an arc is chosen as the exit arc when node $v$ is visited. Given the data of the first $k$ runs, when a node $v$ is visited, the probability of choosing an arc $e$ as exit in the subsequent runs is, $P(v, e) = n_v/k$.
