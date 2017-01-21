@@ -16,7 +16,7 @@
   \caption{\label{fig:programming}%
            Partition examples as $\theta = 70^{\circ}$. The printing direction of each part is orthogonal to its base (shown in the same color as the part)}
 \end{figure}
-We have run our algorithm on various natural or man-made models, and some of the results are presented in Figure \ref{fig:experiment}. We validated our approach by a set of printing experiments on Zortrax desktop printer, a kind of FDM machine that allows a printing layer thickness of 0.09mm , this is also the layer thickness we used in the printing experiments. The experiments are based on the choice of $\theta = 70^{\circ}$, i.e., all overhangs with an angle of no larger than $20^{\circ}$ with respect to the build platform are given support structures. Zortrax provides a built-in 3D printing software called \emph{Z-suite} that can automatically counts the filament of the print material (in meters) and an estimate of the weight of the print material. Table \ref{tab:ertms:summary} summarizes the printing material and time that are consumed by the original models and our partitioned models. Our approach significantly reduces both the printing material and time as the skeleton-based partition reduces both the supported materials inside and outside the models.
+We have run our algorithm on various natural or man-made models, and some of the results are presented in Figure \ref{fig:experiment}. We validated our approach by a set of printing experiments on Zortrax desktop printer, a kind of FDM machine that allows a printing layer thickness of 0.09mm , this is also the layer thickness we used in the printing experiments. The experiments are based on the choice of $\theta = 70^{\circ}$, i.e., all overhangs with an angle of no larger than $20^{\circ}$ with respect to the build platform are given support structures. Zortrax provides a built-in 3D printing software called \emph{Z-suite} that can automatically counts the filament of the print material (in meters) and an estimate of the weight of the print material. For comparison purpose, we use Meshmixer software provided by Autodesk to determine the optimal printing direction that yields the minimum amount of support materials. Table \ref{tab:ertms:summary} summarizes the printing material and time that are consumed by the original models and our partitioned models. Our approach significantly reduces both the printing material and time as the skeleton-based partition reduces both the supported materials inside and outside the models.
 
 
 \begin{table*}[htb]
@@ -30,14 +30,14 @@ We have run our algorithm on various natural or man-made models, and some of the
     \hline
 
      Models& Print material (original)& Print time (original)& Number of parts (skeleton partition)& Number of parts (mesh partition)& Print material (partition)& Print time (partition)& Material save (\%) &Time save(\%)\\ \hline
-     Tree& 8.4m (20g)& 6h 32min &6 & 8 &5.19(12g) & 4h 2min & 38.2143 &38.2653\\ \hline
-     Armadillo& 11.26m (27g)& 7h 30min &9 & 10  &4.65(11g) & 3h 30min & 58.7034 &53.3333\\ \hline
-     Octopus& 12.82m (31g)& 10h 2min &5 & 9  &8.75(21g) &6h 51min & 31.7473 &31.7276\\ \hline
-     Deer& 20.1m (48g)& 15h 8min &4 & 6  &8.89(21g) &5h 25min & 55.7711 &64.207\\ \hline
-     Airplane& 11.56m (28g)& 6h 34min &5 & 7 &5.24(12g) &3h 10min & 54.6713 &51.7766\\ \hline
-     Knots& 20.87m (50g)& 16h 50min &10 & 15 &12.38(29g) &11h 20min & 40.6804 &32.6733\\ \hline
-     Sculpture& 23.68m (56g)& 18h 59min &4 & 10 &16.35(39g) &11h 23min & 30.9544 &40.0351\\ \hline
-     Gargoyle& 8.76m (21g)& 6h 49min &4 & 5 &5.16(12g) &3h 48min & 41.0959 &44.2543\\ \hline
+     Tree& 8.78m (21g)& 4h 59min &6 & 8 &5.19(12g) & 4h 2min & 35.6877 &34.4173\\ \hline
+     Armadillo& 6.77m (16g)& 3h 54min &9 & 10  &4.65(11g) & 3h 30min & 39.6104 &33.3333\\ \hline
+     Octopus& 13.93m (33g)& 7h 40min &5 & 9  &8.75(21g) &6h 51min & 38.8539 &37.3476\\ \hline
+     Deer& 11.39m (27g)& 6h 25min &4 & 6  &8.89(21g) &5h 25min & 15.4943 &39.1386\\ \hline
+     Airplane& 7.27m (17g)& 3h 56min &5 & 7 &5.24(12g) &3h 10min & 20.3647 &44.4444\\ \hline
+     Knots& 21.89m (52g)& 13h 35min &10 & 15 &12.38(29g) &11h 20min & 42.2844 &32.0679\\ \hline
+     Sculpture& 25.92m (62g)& 13h 44min &4 & 10 &16.35(39g) &11h 23min & 25.1716 &39.0723\\ \hline
+     Gargoyle& 6.2m (15g)& 3h 21min &4 & 5 &5.16(12g) &3h 48min & 23.5556 &28.3019\\ \hline
 
   \hline
 
