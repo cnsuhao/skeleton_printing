@@ -65,7 +65,7 @@ We have run our algorithm on various natural or man-made models, and some of the
      Models& Tree& Armadillo& Octopus& Deer& Airplane& Knots &Sculpture & Gargoyle\\ \hline
      number of vertices & 11443   & 34594   & 1343    & 8917  & 15485 & 2904    & 5979    &25002 \\ \hline
      number of skeleton arcs    &130 & 143 & 81 &77 &60 & 77 &56  &50 \\ \hline
-     running time(s)    &197.1732 & 311.559 & 97.1395 &90.618 &88.744 & 92.4798 &74.2186  &199.893 \\
+     time(s)    &197.1732 & 311.559 & 97.1395 &90.618 &88.744 & 92.4798 &74.2186  &199.893 \\
   \hline
 
     \end{tabular}
@@ -90,17 +90,35 @@ We have run our algorithm on various natural or man-made models, and some of the
 
 The algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. The algorithm is run on each model for 8000 runs with the first 1000 runs taken as a training-and-learning process, the running time and the number of vertices of the models are summarized in Table \ref{tab:ertms:time}. Figure \ref{fig:experiment} shows the comparison of the printing effects of the original models and our partitioned models. Due to the limit of the current technology, any FDM printer requires a small amount of supporting bed for holding the printed model on the printing platform, other printing techniques such as SLA, SLM and SLS may avoid the use of these supporting beds. Therefore, our approach guarantees support-free to the most extent for all existing printing techniques.
 
-Since the partition of $S$ may have exponential amount of choices, it is impossible to obtain an optimal mesh partition in polynomial time for complicate models. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the partition result. Thus, it is hard even for our humans to determine the optimum solution. {\color{blue}{In solving such an intricate problem involving various parameters, Monte Carlo Method with a large number of iterations is a good choice. To guarantee that the method can converge to a nice result within limited number of iterations, we apply a training-and-learning procedure, which helps accelerate the searching process. } From Table \ref{tab:ertms:summary}, we can conclude that the partition numbers for the skeletons and mesh models are sufficiently small. Further, we can evaluate our partition result by examining some simple examples as shown in Figure \ref{fig:simpletree}.
+Since the partition of $S$ may have exponential amount of choices, it is impossible to obtain an optimal mesh partition in polynomial time for complicate models. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the partition result. Thus, it is hard even for our humans to determine the optimum solution. {\color{blue}{In solving such an intricate problem involving various parameters, Monte Carlo Method with a large number of iterations is a good choice. To guarantee that the method can converge to a nice result within limited number of iterations, we apply a training-and-learning procedure, which helps accelerate the searching process. } From Table \ref{tab:ertms:summary}, we can conclude that the partition numbers for the skeletons and mesh models are sufficiently small. Further, by running our proposed polynomial-time algorithm for special cases (i.e., the number of partitioned components and the degree for each node are bounded by a small constant), we can evaluate our skeleton partition result by examining all the above mentioned models on a super computer under the Linux system. Under the requirement that the number of resulting partition components is bounded by a constant, we decrease the number of skeleton partition components by 1 gradually for each skeleton model in Table \ref{tab:ertms:summary}.  For each tested number, the result is $YES$; the result is $NO$ if the current tested number is smaller than the optimal number; the result is $NA$, which means "not applicable" if no result can be obtained within the budget running time; the unit of running time is $core*hour$, which means the as a core runs for an hour. The experimental results are summarized in the following table.
 
-In practice, most natural mesh models (shells) are round in the sense that there is no flat platform for supporting it on the ground, and therefore at least one cut is required. Refer to the 8-shaped model and the tree-liked model in Figure \ref{fig:simpletree}, our algorithm partitions each model into two parts (shown in red and blue respectively) with one cut, and is therefore optimal.
+\begin{table*}[htb]
 
-\begin{figure}[tbp]
-  \centering
-  \includegraphics[width=0.5\textwidth]{figs/simpletree.png}
-  \caption{\label{fig:simpletree}%
-           An 8-shaped model (a) and a simplified tree model (b) that are partitioned into the least pieces by our algorithm. The printing directions are indicated by arrows.}
-\end{figure}
+\begin{footnotesize}
 
+\begin{center}
+
+    \begin{tabular}{p{3.0cm} p{1.55cm} p{1.3cm} p{1.3cm} p{1.3cm} p{1.35cm} p{1.5cm} p{1.5cm}p{1.4cm}}
+
+    \hline
+
+     Models& Tree& Armadillo& Octopus& Deer& Airplane& Knots &Sculpture & Gargoyle\\ \hline
+     tested number  & 5 (4)   & 8   & 4    & 3  & 4 (3) & 9   & 3    &3 \\ \hline
+     feasibility    & YES (NO)   & NA & NO & NO &YES (NO) & NO & NO & NO  \\ \hline
+     time(core*hour)    &62.72 (67.84) & 4285.44 & 8.8 &0.01 &0.1 (0.2) & 7870.08 &0.16  &0.1 \\ \hline
+
+    \end{tabular}
+
+\end{center}
+
+\end{footnotesize}
+
+\caption{The result of our polynomial-time algorithm for skeleton partition when the number of partitioned components and the degree for each node are bounded by a small constant.}\label{tab:ertms:super}
+
+\end{table*}
+
+
+From Table \ref{tab:ertms:super}, we can see that 
 
 %Further, our current approach of partitioning tries to find a node as a root of a subgraph, while in general it is possible that the subgraph is unrooted. For example, in Figure \ref{fig:unrooted}, under the angle constraint of $\theta = 70{\circ}$, the tree skeleton can be taken as a whole printable graph while our algorithm would take node $v$ as a root for the upper and lower parts of the tree respectively. Future research can be elaborated along this line. But how the general unrooted subgraphs are taken efficiently other than  searching in an exhaustive combinatorial manner to form a minimum set of subgraphs is unknown.
 
