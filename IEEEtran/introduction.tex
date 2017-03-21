@@ -1,11 +1,6 @@
 \IEEEraisesectionheading{\section{Introduction}\label{sec:introduction}}
 
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=\linewidth]{figs/tree_with_skeleton.png}
-  \caption{\label{fig:ex1}%
-  A deer model is partitioned into support-free parts using our algorithm: (a) a boundary mesh model; (b) skeleton partition by our approach; (c)mesh partition by our approach; (d)the support-free printing of the parts; (e) the assembly result of the printed parts.}
-\end{figure*}
+
 
 \IEEEPARstart {3}{D} printing, or additive manufacturing, has drawn growing interests from researchers in computer graphics. Fused deposition modeling (FDM), stereolithographic (SLA), Selective Laser Melting (SLM) and Selective Laser Sintering (SLS) are the four most popular means of 3D printing techniques. Although 3D printing has seen its applications in producing arbitrarily intricate 3D models, the price of the printing materials, especially for those with high quality, are still outrageously high. Therefore, it is desirable to reduce materials used in the fabrication process. Note that this is also a critical operation for reducing production time and thus the total production cost. For this purpose, an efficient method is to minimize the support structures, which are removed in the post-processing phase of the fabrication task.
 
@@ -24,7 +19,12 @@ Autodesk MeshMixer provides a semiautomatic orientation optimization tool to min
   (a) A solid pyramid used in \cite{Hu_siga14}, and (b) a shell version of the model. The former can be printed in a support-free manner, while roof of the latter needs support.}
 \end{figure}
 
-
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figs/tree_with_skeleton.png}
+  \caption{\label{fig:ex1}%
+  A deer model is partitioned into support-free parts using our algorithm: (a) a boundary mesh model; (b) skeleton partition by our approach; (c)mesh partition by our approach; (d)the support-free printing of the parts; (e) the assembly result of the printed parts.}
+\end{figure*}
 
 
 This paper addresses the problem of decomposing a 3{D} boundary-represented mesh, or \emph{{shell}} model which we call, into the least number of parts, each of which, when printed in a proper direction, is free of support materials. {Finding such optimum partition directly on the surface mesh is challenging as the number of mesh triangles are typically large ($10\sim100k$) and any searching algorithm could quickly lead to expediential space, demanding more effective means. We simplify the problem by considering a reduced representation. In particular,} we draw inspiration from the 1{D} skeleton of organic models: the topology variations of a natural model can be well-represented by its skeleton, and a \youyi{segment} of the skeleton corresponds to a mesh part. Further, the mesh part is typically a cylinder-like shape which can be printed free of support structures if the printing direction is parallel to the skeletal direction (Figure \ref{fig:ex1}).
