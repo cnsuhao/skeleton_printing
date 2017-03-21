@@ -16,6 +16,14 @@
   \caption{\label{fig:programming}%
            Partition examples as $\theta = 70^{\circ}$. The printing direction of each part is orthogonal to its base (shown in the same color as the part)}
 \end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.48\textwidth]{figs/experiment.png}
+  \caption{\label{fig:experiment}%
+           A comparison between printing of original shell models and our partitioned models. The orientations of the models in the left column are determined as the optimal printing directions that correspond to the minimum amount of support materials (by using Meshmixer software provided by Autodesk). }
+\end{figure}
+
 We have run our algorithm on various natural or man-made models, and some of the results are presented in Figure \ref{fig:experiment}. The left column of the Figure exhibits the most material-saving orientation for printing the models using the Meshmixer software, a free software proved by Autodesk company. We validated our approach by a set of printing experiments on Zortrax desktop printer, a kind of FDM machine that allows a printing layer thickness of 0.09mm , this is also the layer thickness we used in the printing experiments. The experiments are based on the choice of $\theta = 70^{\circ}$, i.e., all overhangs with an angle of no larger than $20^{\circ}$ with respect to the build platform are given support structures. Zortrax provides a built-in 3D printing software called \emph{Z-suite} that can automatically counts the filament of the print material (in meters) and an estimate of the weight of the print material. Table \ref{tab:ertms:summary} summarizes the printing material and time that are consumed by the original models and our partitioned models. Our approach significantly reduces both the printing material and time as the skeleton-based partition reduces both the supported materials inside and outside the models.
 
 
@@ -81,12 +89,7 @@ We have run our algorithm on various natural or man-made models, and some of the
 
 
 
-\begin{figure}[tbp]
-  \centering
-  \includegraphics[width=0.48\textwidth]{figs/experiment.png}
-  \caption{\label{fig:experiment}%
-           A comparison between printing of original shell models and our partitioned models. The orientations of the models in the left column are determined as the optimal printing directions that correspond to the minimum amount of support materials (by using Meshmixer software provided by Autodesk). }
-\end{figure}
+
 
 The algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. The algorithm is run on each model for 8000 runs with the first 1000 runs taken as a training-and-learning process, the running time and the number of vertices of the models are summarized in Table \ref{tab:ertms:time}. Figure \ref{fig:experiment} shows the comparison of the printing effects of the original models and our partitioned models. Due to the limit of the current technology, any FDM printer requires a small amount of supporting bed for holding the printed model on the printing platform, other printing techniques such as SLA, SLM and SLS may avoid the use of these supporting beds. Therefore, our approach guarantees support-free to the most extent for all existing printing techniques.
 
