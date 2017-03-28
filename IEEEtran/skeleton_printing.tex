@@ -465,9 +465,10 @@
 \author{Xiangzhi~Wei \quad
         Siqi~Qiu \quad
         Lin Zhu\quad
+        Ruiliang Feng\quad
         Juntong Xi\quad
         Youyi~Zheng\thanks{$\dag$ corresponding author}$^{\dag}$
-\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem X. Wei, S. Qiu, L. Zhu and J. Xi are with the Department of Intelligent Manufacturing and Information Engineering, School of Mechanical Engineering,Shanghai Jiao Tong University, China.\protect\\
+\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem X. Wei, S. Qiu, L. Zhu, R. Feng and J. Xi are with the Department of Intelligent Manufacturing and Information Engineering, School of Mechanical Engineering,Shanghai Jiao Tong University, China.\protect\\
 % note need leading \protect in front of \\ to get a newline within \thanks as
 % \\ is fragile and will error, could use \hfil\break instead.
 E-mail: ~\{antonwei,siqiqiu,zhulin0728,jtxi\}@sjtu.edu.cn
@@ -538,7 +539,7 @@ E-mail: ~zhengyy@shanghaitech.edu.cn
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \IEEEcompsoctitleabstractindextext{%
-\begin{abstract} \justifying Minimizing support structures is crucial in reducing 3D printing material and time, partition-based methods are efficient means in realizing this objective. Although there exists some algorithm for support-free fabrication of solid models, no algorithm ever considers the problem of support-free fabrication for 3D printed \emph{shell} models. In this paper, we present a {skeleton-based algorithm} for partitioning a 3{D} surface model into the least number of parts for 3{D} printing without using any support structure. {To achieve support-free fabrication while minimizing the effect of the seams and cracks that are inevitably induced by the partition, which affects the aesthetics and strength of the final assembled surface,} we put forward an optimization system with the minimization of the number of partitioned components and the total length of the cuts, under the constraints of support-free printing angle. Our approach is particularly {tailored} for shell models, and it can be applicable to solid models as well. We show that the optimization problem is {NP}-hard and propose a {stochastic} method to find a {viable} solution to the objectives. We propose a polynomial-time algorithm for a special case when the skeleton graph satisfies the requirement that the number of partitioned parts and the degree of each node is bounded by a small constant. {We evaluate our partition method on a number of 3{D} models and validate our method by 3D printing experiments.}
+\begin{abstract} \justifying Minimizing support structures is crucial in reducing 3D printing material and time, partition-based methods are efficient means in realizing this objective. Although there exists some algorithm for support-free fabrication of solid models, no algorithm ever considers the problem of support-free fabrication for 3D printed \emph{shell} models.  {\color{red} {Shell models are prevalent in the mechanical industrial, especially for the lightweight design. }} In this paper, we present a {skeleton-based algorithm} for partitioning a 3{D} surface model into the least number of parts for 3{D} printing without using any support structure. {To achieve support-free fabrication while minimizing the effect of the seams and cracks that are inevitably induced by the partition, which affects the aesthetics and strength of the final assembled surface,} we put forward an optimization system with the minimization of the number of partitioned components and the total length of the cuts, under the constraints of support-free printing angle. Our approach is particularly {tailored} for shell models, and it can be applicable to solid models as well. We show that the optimization problem is {NP}-hard and propose a {stochastic} method to find a {viable} solution to the objectives. We propose a polynomial-time algorithm for a special case when the skeleton graph satisfies the requirement that the number of partitioned parts and the degree of each node is bounded by a small constant. {We evaluate our partition method on a number of 3{D} models and validate our method by 3D printing experiments.}
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -756,7 +757,7 @@ E-mail: ~zhengyy@shanghaitech.edu.cn
 \fi
 
 
-This work was supported in part by Shanghai Sailing Program No.16YF1405500, Shanghai Jiao Tong University Grant No. AF0200163, and State Key Laboratory of Mechanical Systems and Vibration Grant No. MSVZD201505, Joint Research Center for Aerospace Technology Grand No. USCAST2015-23 and the China Young 1000 Talents Program.
+This work was supported in part by Shanghai Sailing Program No.16YF1405500, Shanghai Jiao Tong University Grant No. AF0200163, State Key Laboratory of Mechanical Systems and Vibration Grant No. MSVZD201505,  and The National Natural Science Foundation of China NO. 51605290, and the China Young 1000 Talents Program.
 
 
 % Can use something like this to put references on a page
@@ -856,6 +857,8 @@ Manufacturing and Information Engineering, School of Mechanical Engineering, Sha
 Manufacturing and Information Engineering, School of Mechanical Engineering, Shanghai Jiao Tong University. She received her PhD degree from the Department of Computer Engineering, Compiegne University of Technology, her MSc degree from Department of Electronic Engineering, University of Paris-Sud, and her BSc degree from School of Optical Science and Engineering, Huazhong University of Science and Technology. Her research interests include Monte Carlo methods, System of Systems, and reliability analysis under uncertainty.
 \end{IEEEbiography}
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{figs/bio/zhu.jpg}}]{Lin Zhu} is a  PhD Candidate with the Institute of Intelligent Manufacturing and Information Engineering, School of Mechanical Engineering, Shanghai Jiao Tong University. She received her ME degree in Mechanical Engineering from the Xi¡¯an Jiao Tong University; and BE degree in Packaging Engineering from Xi'an University of Technology. Her current research interests include Additive Manufacturing, Design of Experiments and Analysis.
+\end{IEEEbiography}
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{figs/bio/feng.png}}]{Ruiliang Feng} is a  PhD Candidate with the Institute of Intelligent Manufacturing and Information Engineering, School of Mechanical Engineering, Shanghai Jiao Tong University. He received his ME degree in Mechanical Engineering from from the China Coal Research Institute; and BE degree in Mechanical Engineering from China University of Mining and Technology. His current research interest is Additive Manufacturing.
 \end{IEEEbiography}
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{figs/bio/xi.jpg}}]{Juntong Xi} received his PhD degree in Mechanical Engineering from Xi'an Jiaotong University. He is a full Professor with the Institute of Intelligent Manufacturing and Information Engineering, School of Mechanical Engineering, Shanghai Jiaotong University, Shanghai, China. His current research interests include digital manufacturing, measurement technology and instruments, and dental CAD.
 \end{IEEEbiography}
