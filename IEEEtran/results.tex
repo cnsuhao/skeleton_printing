@@ -10,19 +10,7 @@
 \end{figure}
 
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.3\textwidth]{figs/programming.png}
-  \caption{\label{fig:programming}%
-           Partition examples as $\theta = 70^{\circ}$. The printing direction of each part is orthogonal to its base (shown in the same color as the part)}
-\end{figure}
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.48\textwidth]{figs/experiment.png}
-  \caption{\label{fig:experiment}%
-           A comparison between printing of original shell models and our partitioned models. The orientations of the models in the left column are determined as the optimal printing directions that correspond to the minimum amount of support materials (by using Meshmixer software provided by Autodesk). }
-\end{figure}
 
 We have run our algorithm on various natural or man-made models, and some of the results are presented in Figure \ref{fig:experiment}. The left column of the Figure exhibits the most material-saving orientation for printing the models using the Meshmixer software, a free software proved by Autodesk company. We validated our approach by a set of printing experiments on Zortrax desktop printer, a kind of FDM machine that allows a printing layer thickness of 0.09mm , this is also the layer thickness we used in the printing experiments. The experiments are based on the choice of $\theta = 70^{\circ}$, i.e., all overhangs with an angle of no larger than $20^{\circ}$ with respect to the build platform are given support structures. Zortrax provides a built-in 3D printing software called \emph{Z-suite} that can automatically counts the filament of the print material (in meters) and an estimate of the weight of the print material. Table \ref{tab:ertms:summary} summarizes the printing material and time that are consumed by the original models and our partitioned models. Our approach significantly reduces both the printing material and time as the skeleton-based partition reduces both the supported materials inside and outside the models.
 
@@ -122,13 +110,13 @@ Since the partition of $S$ may have exponential amount of choices, it is impossi
 \end{table*}
 
 
-Comparing Table \ref{tab:ertms:super} with Table \ref{tab:ertms:summary}, we can see that the skeleton partition results of Armadillo and Knots cannot be improved within a long-lasting running time; the results of Octopus, Deer, Sculpture, Airplane and Gargoyle in Table \ref{tab:ertms:summary} are optimal already and cannot be improved further; the result for tree in Table \ref{tab:ertms:summary} can be improved by 2. 
+Comparing Table \ref{tab:ertms:super} with Table \ref{tab:ertms:summary}, we can see that the skeleton partition results of Armadillo and Knots cannot be improved within a long-lasting running time; the results of Octopus, Deer, Sculpture, Airplane and Gargoyle in Table \ref{tab:ertms:summary} are optimal already and cannot be improved further; the result for tree in Table \ref{tab:ertms:summary} can be improved by 2.
 {\color{red} {See Figure \ref{fig:super_tree} with the skeleton partition of the Tree model, we can partition the mesh model into 6 components. As stated in the mesh partition section, For the cross of the red and blue subgraphs, two more cuts are required to separate the their corresponding mesh components. Therefore, we can conclude that our proposed stochastic Method with the help of a training and learning scheme can guarantee optimistic results within a short time.}}
 
 \begin{figure}[t!]
   \centering
   \includegraphics[width=0.8\linewidth]{figs/super_tree.png}
-  \caption{\label{fig:limit}%
+  \caption{\label{fig:super_tree}%
   The Tree model is partitioned into 6 parts according to the 4 subgraphs obtained by the super computer. Two more cuts are required for the cross of the red and blue subgraphs.}
 \end{figure}
 

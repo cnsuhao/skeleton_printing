@@ -1,4 +1,4 @@
-\section{Closed-form Solution}
+\section{A Closed-form Solution}
 
 In nature, most organic models ubiquitously contain cylindrical parts \cite{Zhou:2015:GCD}, e.g., arms, legs, etc. Moreover, an cylindrical part can be well represented by its corresponding 1{D} skeleton. Based on this property, a chunk of a mesh model can be fabricated free of support {if all the arcs of its corresponding skeleton piece subtend to a printing direction by an angle of no large than $\theta$ (Figure \ref{fig:fork}).} Hence, our problem becomes partitioning a given 1{D} skeleton graph into a set of subgraphs such that each subgraph merits the desirable support-free property. In the remainder of the paper, by model we mean an organic mesh model of natural life form or articulated figures preserving nice topology features of real lives.
 
@@ -50,9 +50,9 @@ We shall reduce the Clique Cover problem to the skeleton partition problem, wher
 Now we claim that there is a clique cover in $G$ of size $K$ if and only if there is a skeleton partition of $S$ into $K$ support-free subgraphs (the angle between each pair of arcs is no larger than $2\theta$).
 For if there is clique cover in $G$ of size $K$, then each clique in $G$ corresponds to a rooted subgraph of $S$ that satisfies the angle constraint. Conversely, if $S$ is partitioned into $K$ support-free subgraphs, then every pair of arcs in each subgraph satisfy the angle constraint, by the mapping relation, their corresponding nodes in $G$ form a clique. This completes the proof. \qed
 
-This tells the difficulty of solving the problem of partitioning a 3D model into the least number of support free pieces. In the following, we shall show how to solve the problem with a practical yet efficient algorithm.
+This tells the difficulty of solving the problem of partitioning a 3D model into the least number of support free pieces. In the following, we showcase the problem into different scenarios and show that there exists polynomial solutions when the graph satisfies certain conditions.
 
-\textbf{Tree case.} If the topology of the skeleton $S$ is a tree such that the degree of each node of the tree is no larger than a constant $d$, and the least number of support-free subgraphs is bounded by another constant $c$, we show that the problem of partitioning $S$ into the least number of support-free subgraphs (satisfying the angle constraint) can be computed in polynomial time. In general, for a tree structure with arbitrary $c$ and $d$, we have them following theorem.
+\textbf{Tree case.} If the topology of the skeleton $S$ is a tree such that the degree of each node is bounded by a constant $d$, and the least number of support-free subgraphs is smaller than a constant $c$, we show that the problem of partitioning $S$ into the least number of support-free subgraphs (satisfying the angle constraint) can be computed in polynomial time. In general, for a tree structure with arbitrary $c$ and $d$, we have them following theorem.
 
 \emph{\textbf{Theorem 2}: Given three integer numbers $c$, $d$, Let $S$ be a tree structure such that the degree of each node is bounded by $d$, then whether $S$ has $c$ support-free subgraphs can be determined in $O(2^{cd}n^{2c})$ time, and a partition instance can be reported within the same time bound.}
 
@@ -67,6 +67,8 @@ Next we consider the general case when the graph is not a tree (i.e., contains c
 
 \emph{\textbf{Theorem 3}: Given three integer numbers $c$, $d$ and $h$, Let $S$ be a general graph with a genus of $h$ such that the degree of each node is bounded by $d$, then whether $S$ has $c$ support-free subgraphs can be determined in $O(2^{cd}n^{2c+h})$ time, and a partition instance can be reported within the same time bound.}
 
-We formulate the partition problem with the objectives of both the total number of cuts and the cutting length, under the constraint of printing angle of each branch with respect to the build platform, the angle between a cutting plane and the printing direction, the dimension of each printed model with respect to the printable volume of a given printer, and the base area of a printed model. Since the problem is NP-hard, we propose a randomized stochastic method in compliance with a set of carefully designed selection strategy to seek a practical solution. Figure \ref{fig:ex1} shows an example of a deer model (shell), our partition result based on Laplacian skeleton of the model, the printing result and the assembly effect. The details of the stochastic method is given below.
+We formulate the partition problem with the objectives of both the total number of cuts and the cutting length, under the constraint of printing angle of each branch with respect to the build platform, the angle between a cutting plane and the printing direction, the dimension of each printed model with respect to the printable volume of a given printer, and the base area of a printed model. 
+
+Even though we have shown cases when the problem has polynomial time solutions, exhaustive search is still computational prohibitive in complex cases (e.g., when the graph contain multiple cycles and the value of $c$ and $d$ is large). Next, we propose a randomized stochastic method in compliance with a set of carefully designed selection strategy to seek a practical solution.
 
 
