@@ -26,14 +26,14 @@ We have run our algorithm on various natural or man-made models, and some of the
     \hline
 
      Models& Print material (original)& Print time (original)& Number of parts (skeleton partition)& Number of parts (mesh partition)& Print material (partition)& Print time (partition)& Material save (\%) &Time save(\%)\\ \hline
-     Tree& 8.78m (21g)& 4h 59min &6 & 8 &5.19(12g) & 4h 2min & 35.6877 &34.4173\\ \hline
-     Armadillo& 6.77m (16g)& 3h 54min &9 & 10  &4.65(11g) & 3h 30min & 39.6104 &33.3333\\ \hline
-     Octopus& 13.93m (33g)& 7h 40min &5 & 9  &8.75(21g) &6h 51min & 38.8539 &37.3476\\ \hline
-     Deer& 11.39m (27g)& 6h 25min &4 & 6  &8.89(21g) &5h 25min & 15.4943 &39.1386\\ \hline
-     Airplane& 7.27m (17g)& 3h 56min &5 & 7 &5.24(12g) &3h 10min & 20.3647 &44.4444\\ \hline
-     Knots& 21.89m (52g)& 13h 35min &10 & 15 &12.38(29g) &11h 20min & 42.2844 &32.0679\\ \hline
-     Sculpture& 25.92m (62g)& 13h 44min &4 & 10 &16.35(39g) &11h 23min & 25.1716 &39.0723\\ \hline
-     Gargoyle& 6.2m (15g)& 3h 21min &4 & 5 &5.16(12g) &3h 48min & 23.5556 &28.3019\\ \hline
+     Tree& 8.07m (19g)& 6h 9min &6 & 8 &5.19m(12g) & 4h 2min & 35.6877 &34.4173\\ \hline
+     Armadillo& 7.7m (18g)& 5h 15min &9 & 10  &4.65m(11g) & 3h 30min & 39.6104 &33.3333\\ \hline
+     Octopus& 14.31m (34g)& 10h 56min &5 & 9  &8.75m(21g) &6h 51min & 38.8539 &37.3476\\ \hline
+     Deer& 10.52m (25g)& 8h 54min &4 & 6  &8.89m(21g) &5h 25min & 15.4943 &39.1386\\ \hline
+     Airplane& 6.58m (16g)& 5h 42min &5 & 7 &5.24m(12g) &3h 10min & 20.3647 &44.4444\\ \hline
+     Knots& 21.45m (51g)& 16h 41min &10 & 15 &12.38m(29g) &11h 20min & 42.2844 &32.0679\\ \hline
+     Sculpture& 21.85m (52g)& 18h 41min &4 & 10 &16.35m(39g) &11h 23min & 25.1716 &39.0723\\ \hline
+     Gargoyle& 6.75m (16g)& 5h 18min &4 & 5 &5.16m(12g) &3h 48min & 23.5556 &28.3019\\ \hline
 
   \hline
 
@@ -61,7 +61,7 @@ We have run our algorithm on various natural or man-made models, and some of the
      Models& Tree& Armadillo& Octopus& Deer& Airplane& Knots &Sculpture & Gargoyle\\ \hline
      number of vertices & 11443   & 34594   & 1343    & 8917  & 15485 & 2904    & 5979    &25002 \\ \hline
      number of skeleton arcs    &130 & 143 & 81 &77 &60 & 77 &56  &50 \\ \hline
-     time(s)    &187.2576 & 346.374 & 102.1403 &93.6414 &91.8654 & 95.8742 &76.8461  &202.7632 \\
+     time    &187.2576s & 346.374s & 102.1403s &93.6414s &91.8654s & 95.8742s &76.8461s  &202.7632s \\
   \hline
 
     \end{tabular}
@@ -79,9 +79,11 @@ We have run our algorithm on various natural or man-made models, and some of the
 
 
 
-The algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. The algorithm is run on each model for 8000 runs with the first 1000 runs taken as a training-and-learning process, the running time and the number of vertices of the models are summarized in Table \ref{tab:ertms:time}. Figure \ref{fig:experiment} shows the comparison of the printing effects of the original models and our partitioned models. Due to the limit of the current technology, any FDM printer requires a small amount of supporting bed for holding the printed model on the printing platform, other printing techniques such as SLA, SLM and SLS may avoid the use of these supporting beds. Therefore, our approach guarantees support-free to the most extent for all existing printing techniques.
+The algorithm was implemented with C++ on a PC with Intel i7-4790 and 8 GB RAM. The algorithm is run on each model for 8000 times with the first 1000 times taken as a training-and-learning process, the running time and the number of vertices of the models are summarized in Table \ref{tab:ertms:time}. {\color{red} The running time of the algorithm depends on the number of iterations, the number of mesh vertices and the number of skeleton arcs, the topology of the skeletons, the seed nodes of the subgraph used in each iteration, and the positions of the nodes that induce mesh partition. Among these factors, in addition to the the numbers, the topology of the skeletons matters a lot: a structure with loops or without loops (i.e., a tree) make a significant difference. In particular, the fewer loops the easier it is for skeleton decomposition. Refer to Theorem 1 and Theorem 2 for the difference. As the number of mesh vertices increases, the number of skeleton arcs may not change since a small skeleton arc can represent a large number of vertices, which means that the running time may not change that much. However, even if the number of skeleton arcs increases, the running time still depends on the other factors such as the seed nodes and the terminal nodes chosen in each iteration. In particular, if the nodes are chosen properly within the first few iterations, then the algorithm can stop within a short.}
 
-Since the partition of $S$ may have exponential amount of choices, it is impossible to obtain an optimal mesh partition in polynomial time for complicate models. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the partition result. Thus, it is hard even for our humans to determine the optimum solution. In solving such an intricate problem involving various parameters, stochastic method with a large number of iterations is a good choice. To guarantee that the method can converge to a nice result within limited number of iterations, we apply a training-and-learning procedure, which helps accelerate the searching process. From Table \ref{tab:ertms:summary}, we can conclude that the partition numbers for the skeletons and mesh models are sufficiently small. Further, by running our proposed polynomial-time algorithm for special cases (i.e., the number of partitioned components and the degree for each node are bounded by a small constant), we can evaluate our skeleton partition result by examining all the above mentioned models on a super computer under the Linux system. Table \ref{tab:ertms:super} summarizes the result of the super computer. Particularly, the result $NA$ means ``not applicable" if no result can be obtained within the budget running time. More precisely, for the Armadillo model, only $1/5836917$ of the total combinations are tested; and for the Knots model, after 36 hours, only $1/122437$ of the total combinations are tested. Given a skeleton, the number of CPU cores is chosen based on the principle that the number of cores should be smaller than the number of arcs in the skeleton; and that the super computer assigns an integer number of nodes to the user, where a node contains 16 CPU cores. The experimental results are summarized in the following table.
+Figure \ref{fig:experiment} shows the comparison of the printing effects of the original models and our partitioned models. Due to the limit of the current technology, any FDM printer requires a small amount of supporting bed for holding the printed model on the printing platform, other printing techniques such as SLA, SLM and SLS may avoid the use of these supporting beds. Therefore, our approach guarantees support-free to the most extent for all existing printing techniques.
+
+Since the partition of $S$ may have exponential amount of choices, it is impossible to obtain an optimal mesh partition in polynomial time for complicate models. Particularly, which arcs to be taken into a subgraph and the taking sequence significantly affect the partition result. Thus, it is hard even for our humans to determine the optimum solution. In solving such an intricate problem involving various parameters, stochastic method with a large number of iterations is a good choice. To guarantee that the method can converge to a nice result within limited number of iterations, we apply a training-and-learning procedure, which helps accelerate the searching process. From Table \ref{tab:ertms:summary}, we can conclude that the partition numbers for the skeletons and mesh models are sufficiently small. Further, by running our proposed polynomial-time algorithm for special cases (i.e., the number of partitioned components and the degree for each node are bounded by a small constant), we can evaluate our skeleton partition result by examining all the above mentioned models on a super computer under the Linux system. Table \ref{tab:ertms:super} summarizes the result of the super computer. Particularly, the result $NA$ means "not applicable" if no result can be obtained within the budget running time. More precisely, for the Armadillo model, only $1/5836917$ of the total combinations are tested; and for the Knots model, after 36 hours, only $1/122437$ of the total combinations are tested. Given a skeleton, the number of CPU cores is chosen based on the principle that the number of cores should be smaller than the number of arcs in the skeleton; and that the super computer assigns an integer number of nodes to the user, where a node contains 16 CPU cores. The experimental results are summarized in the following table.
 
 \begin{table*}[htb]
 
@@ -109,7 +111,7 @@ Since the partition of $S$ may have exponential amount of choices, it is impossi
 \end{table*}
 
 
-Comparing Table \ref{tab:ertms:super} with Table \ref{tab:ertms:summary}, we can see that the skeleton partition results of Armadillo and Knots cannot be improved within a long-lasting running time; the results of Octopus, Deer, Sculpture, Airplane and Gargoyle in Table \ref{tab:ertms:summary} are optimal already and cannot be improved further; the result for tree in Table \ref{tab:ertms:summary} can be improved by 2.
+Comparing Table \ref{tab:ertms:super} with Table \ref{tab:ertms:summary}, we can see that the skeleton partition results of Armadillo and Knots cannot be improved within a long-lasting running time; the results of Octopus, Deer, Sculpture, Airplane and Gargoyle in Table \ref{tab:ertms:summary} are optimal already and cannot be improved further; the result for Tree in Table \ref{tab:ertms:summary} can be improved by 2.
 { Therefore, we can conclude that our proposed stochastic Method with the help of a training and learning scheme can guarantee optimistic results within a short time.}
 
 
