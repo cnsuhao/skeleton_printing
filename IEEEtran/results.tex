@@ -21,7 +21,7 @@ We have run our algorithm on various natural or man-made models, and some of the
 
 \begin{center}
 
-    \begin{tabular}{p{1cm} p{1cm} p{1.5cm} p{1.5cm} p{1.3cm} p{1.3cm} p{1.5cm} p{1.5cm} p{1.5cm} p{1.5cm}}
+    \begin{tabular}{p{1cm} p{1cm} p{1.5cm} p{1.5cm} p{1.0cm} p{1.0cm} p{1.3cm} p{1.3cm} p{1.3cm} p{1.3cm}p{1.4cm}}
 
     \hline
 
@@ -34,8 +34,7 @@ We have run our algorithm on various natural or man-made models, and some of the
      Knots& 3.46s& 21.45m (51g)& 16h 41min &10 & 15 &12.38m(29g) &11h 20min & 42.2844 &32.0679\\ \hline
      Sculpture& 6.28s& 21.85m (52g)& 18h 41min &4 & 10 &16.35m(39g) &11h 23min & 25.1716 &39.0723\\ \hline
      Gargoyle& 55.34s& 6.75m (16g)& 5h 18min &4 & 5 &5.16m(12g) &3h 48min & 23.5556 &28.3019\\ \hline
-
-  \hline
+     Bearing & 55.34s& 8.52m£¨20g£© & 6h 33min &10 & 10 &7.36m(18g) &4h 42min & 13.62 &28.24\\ \hline
 
     \end{tabular}
 
@@ -54,14 +53,14 @@ We have run our algorithm on various natural or man-made models, and some of the
 
 \begin{center}
 
-    \begin{tabular}{p{3.0cm} p{1.45cm} p{1.3cm} p{1.3cm} p{1.3cm} p{1.35cm} p{1.5cm} p{1.5cm}p{1.5cm}}
+    \begin{tabular}{p{1.9cm} p{1.3cm} p{1.3cm} p{1.3cm} p{1.3cm} p{1.3cm} p{1.3cm} p{1.3cm}p{1.3cm}p{1.3cm}}
 
     \hline
 
-     Models& Tree& Armadillo& Octopus& Deer& Airplane& Knots &Sculpture & Gargoyle \\ \hline
-     number of vertices & 11443   & 34594   & 1343    & 8917  & 15485 & 2904    & 5979    &25002 \\ \hline
-     number of skeleton arcs    &130 & 143 & 81 &77 &60 & 77 &56  &50 \\ \hline
-     time    &187.2576s & 346.374s & 102.1403s &93.6414s &91.8654s & 95.8742s &76.8461s  &202.7632s \\
+     Models& Tree& Armadillo& Octopus& Deer& Airplane& Knots &Sculpture & Gargoyle & Bearing \\ \hline
+     number of vertices & 11443   & 34594   & 1343    & 8917  & 15485 & 2904    & 5979    &25002 & 8000\\ \hline
+     number of skeleton arcs    &130 & 143 & 81 &77 &60 & 77 &56  &50 &44\\ \hline
+     time    &187.2576s & 346.374s & 102.1403s &93.6414s &91.8654s & 95.8742s &76.8461s  &202.7632s &173.4283\\
   \hline
 
     \end{tabular}
@@ -91,14 +90,14 @@ Since the partition of $S$ may have exponential amount of choices, it is impossi
 
 \begin{center}
 
-    \begin{tabular}{p{3.0cm} p{1.55cm} p{1.3cm} p{1.0cm} p{1.3cm} p{2.25cm} p{1.2cm} p{1.2cm}p{1.4cm}}
+    \begin{tabular}{p{1.8cm} p{1.5cm} p{1.3cm} p{1.0cm} p{1.3cm} p{1.5cm} p{1.2cm} p{1.2cm}p{1.4cm}p{1.4cm}}
 
     \hline
 
-     Models          & Tree           & Armadillo      & Octopus   & Deer      & Airplane      & Knots    &Sculpture  & Gargoyle\\ \hline
-     optimal number   & 4             & NA              & 5         & 4         & 5             & NA      & 4         &4 \\ \hline
-     number of CPU cores &128         & 144            & 80        & 48        &48             & 80       &16         &32 \\ \hline
-     time(hours)     &0.49            & 36.27          & 1.36      &0.05263   &0.06824        & 36.01    &0.24       &0.0793 \\ \hline
+     Models          & Tree           & Armadillo      & Octopus   & Deer      & Airplane      & Knots    &Sculpture  & Gargoyle  & Bearing\\ \hline
+     optimal number   & 4             & NA              & 5         & 4         & 5             & NA      & 4         &4          &10\\ \hline
+     number of CPU cores &128         & 144            & 80        & 48        &48             & 80       &16         &32         &32\\ \hline
+     time(hours)     &0.49            & 36.27          & 1.36      &0.05263   &0.06824        & 36.01    &0.24       &0.0793      &4.2746\\ \hline
 
     \end{tabular}
 
