@@ -173,7 +173,7 @@ Further, as $Trim\_BFS^*$ is greedy, the growth is towards a local maximal subgr
 
 \textbf{Mesh Partition.}
 {{In the following section, we shall describe how $MeshPartition(U , M)$ works when a cut is required around a skeleton node $v$. Here the pseudocode is omitted for brevity.}}
-The skeleton partition returns a set of nodes where the mesh partition should occur. In particular, the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. We need to determine the exact positions and orientations of the cutting planes. \youyi{Here we use a planar cut instead of geodesic cuts which are often used to segment a mesh part since planar cuts are simple and much easier to glue when 3D printed.}
+The skeleton partition returns a set of nodes where the mesh partition should occur. In particular, the cutting plane should be in the vicinity of each node $v$ incident to at least two distinct subgraphs. We need to determine the exact positions and orientations of the cutting planes. Here we use a planar cut instead of geodesic cuts which are often used to segment a mesh part since planar cuts are simple and much easier to glue when 3D printed.
 
 During the Laplacian smoothing process, a set of points on the mesh (typically form a cylindrical shape whose central axis lies on a skeleton arc) collapse into a node on the skeleton. To efficiently cut the mesh, for each node $v$ on the skeleton, we associate with it the set of points on the mesh that collapse into it. To preserve the geometric features as well as the aesthetic of the final assembled model, we shall cut the mesh through a concave point from this set. The detailed procedure is presented in the remainder of the section.
 
